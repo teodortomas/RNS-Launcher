@@ -8,6 +8,7 @@ The launcher only opens apps already installed on the radio; it does not impleme
 
 - Six circular, raised grey shortcut keys arranged in three mirrored pairs around a large, auto-fitting central clock, date and GPS speed, on a dark textured field with Volkswagen-red rings. A small settings gear sits in the upper-right corner; there is no duplicate header or footer bar.
 - The complete interface is available in Czech, including a manual Czech option in language settings.
+- Settings share the graphite-and-VW-red look and only expose controls wired to this home screen: language, app assignments for the five app-backed tiles, GPS access, keep-screen-on, default launcher, and hidden drawer apps.
 - The center shows GPS speed as a centered number with `km/h` below it; without a fresh fix it shows `--`. Foreground location is used only while the home screen is visible.
 - The app drawer sees only launchable apps; the install manifest does not declare notification-listener access.
 - Radio uses a classic FM set with an antenna; navigation uses a map-marker icon to distinguish it from App-Connect. The tiles launch the chosen installed app; App-Connect displays a gray-and-white version of Google's Android Auto launcher mark.

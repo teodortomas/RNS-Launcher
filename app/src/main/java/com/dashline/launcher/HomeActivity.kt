@@ -1189,8 +1189,8 @@ class LegacyDashboardActivity : BaseActivity() {
         super.onResume()
         // Setup isn't finished — bounce straight back to it.
         if (enforceSetup()) return
-        // Re-apply in case "auto" theme crossed the day/night boundary while away.
-        ThemeManager.apply(prefs)
+        // Keep any legacy dashboard pages on the same fixed dark VW palette.
+        ThemeManager.apply()
         // This activity is singleTask, so onCreate won't re-run after the user
         // changes the colour scheme — repaint the accent pieces here.
         applyAccent()

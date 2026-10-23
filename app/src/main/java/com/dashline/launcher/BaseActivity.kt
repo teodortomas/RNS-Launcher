@@ -30,6 +30,9 @@ import androidx.core.view.WindowInsetsControllerCompat
  */
 abstract class BaseActivity : AppCompatActivity() {
 
+    /** Screens may opt out when they provide their own fixed brand palette. */
+    protected open val usesUserGradient: Boolean = true
+
     private var contentRoot: View? = null
     private var appliedAccent: Int? = null
 
@@ -98,6 +101,7 @@ abstract class BaseActivity : AppCompatActivity() {
      * was launched with after the user picks a different one.
      */
     protected fun applyGradient() {
+        if (!usesUserGradient) return
         val root = contentRoot ?: return
         val preset = GradientThemes.current(this)
         root.background = GradientThemes.background(this, preset)

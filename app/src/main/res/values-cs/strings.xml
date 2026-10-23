@@ -63,13 +63,13 @@
     <string name="setup_done">Hotovo</string>
     <string name="not_set">Nenastaveno</string>
     <string name="setup_permissions">Oprávnění</string>
-    <string name="setup_permissions_hint">Poloha umožňuje zobrazovat místní počasí a rychlost GPS.</string>
-    <string name="settings_location_access">Přístup k poloze</string>
+    <string name="setup_permissions_hint">Poloha umožňuje na hlavní obrazovce zobrazit rychlost z GPS.</string>
+    <string name="settings_location_access">Poloha pro rychlost GPS</string>
     <string name="access_granted">Povoleno</string>
     <string name="access_needed">Klepněte pro povolení</string>
 
     <!-- Nastavení -->
-    <string name="settings_title">Nastavení launcheru</string>
+    <string name="settings_title">Nastavení</string>
     <string name="section_general">OBECNÉ</string>
     <string name="section_apps">VÝCHOZÍ APLIKACE</string>
     <string name="section_access">OPRÁVNĚNÍ</string>
@@ -79,8 +79,8 @@
     <string name="settings_phone_app">Telefonní aplikace</string>
     <string name="settings_nav_app">Navigační aplikace</string>
     <string name="settings_radio_app">Rádiová aplikace</string>
-    <string name="settings_media_app">Mediální aplikace (když nic nehraje)</string>
-    <string name="settings_android_auto_app">Aplikace Android Auto</string>
+    <string name="settings_media_app">Přehrávač médií</string>
+    <string name="settings_android_auto_app">Aplikace App-Connect / Android Auto</string>
     <string name="settings_carplay_app">Aplikace CarPlay</string>
     <string name="settings_notification_access">Přístup k informacím o médiích</string>
     <string name="access_enabled">Zapnuto</string>

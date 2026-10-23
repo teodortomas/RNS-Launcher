@@ -24,4 +24,13 @@
     <color name="art_bg">#59FFFFFF</color>
     <color name="seek_track">#9CBCD8</color>
     <color name="seek_fill">#1E5C8A</color>
+
+    <!-- Fixed VW settings palette, independent of the retired gradient presets. -->
+    <color name="vw_settings_surface">#202224</color>
+    <color name="vw_settings_outline">#414649</color>
+    <color name="vw_settings_primary">#ECEEEF</color>
+    <color name="vw_settings_secondary">#A7ACAF</color>
+    <color name="vw_settings_accent">#C43A43</color>
+    <color name="vw_settings_divider">#363A3D</color>
+    <color name="vw_settings_pressed">#35C43A43</color>
 </resources>

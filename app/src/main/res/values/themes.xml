@@ -4,6 +4,7 @@
          on API 19 here; API 21+ additions live in values-v21/themes.xml. -->
     <style name="Theme.RadioLauncher" parent="Theme.AppCompat.DayNight.NoActionBar">
         <item name="android:windowBackground">@color/bg</item>
+        <item name="colorAccent">@color/vw_settings_accent</item>
     </style>
 
     <!-- Action button along the bottom of the Customize screen. -->
@@ -59,8 +60,8 @@
         <item name="android:layout_marginStart">4dp</item>
         <item name="android:layout_marginTop">18dp</item>
         <item name="android:layout_marginBottom">6dp</item>
-        <item name="android:textColor">@color/accent</item>
-        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">@color/vw_settings_accent</item>
+        <item name="android:textSize">12sp</item>
         <item name="android:textStyle">bold</item>
     </style>
 
@@ -69,7 +70,7 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:orientation">vertical</item>
-        <item name="android:background">@drawable/card_dark</item>
+        <item name="android:background">@drawable/vw_settings_group</item>
     </style>
 
     <!-- Settings row: title on the left, current value on the right. -->
@@ -78,12 +79,12 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:orientation">horizontal</item>
         <item name="android:gravity">center_vertical</item>
-        <item name="android:minHeight">56dp</item>
+        <item name="android:minHeight">60dp</item>
         <item name="android:paddingStart">16dp</item>
         <item name="android:paddingEnd">16dp</item>
         <item name="android:paddingTop">10dp</item>
         <item name="android:paddingBottom">10dp</item>
-        <item name="android:background">?android:attr/selectableItemBackground</item>
+        <item name="android:background">@drawable/vw_settings_row_selector</item>
         <item name="android:clickable">true</item>
         <item name="android:focusable">true</item>
     </style>
@@ -92,7 +93,7 @@
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_weight">1</item>
-        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textColor">@color/vw_settings_primary</item>
         <item name="android:textSize">16sp</item>
     </style>
 
@@ -103,7 +104,7 @@
         <item name="android:gravity">end</item>
         <item name="android:maxLines">1</item>
         <item name="android:ellipsize">end</item>
-        <item name="android:textColor">@color/text_secondary</item>
+        <item name="android:textColor">@color/vw_settings_secondary</item>
         <item name="android:textSize">14sp</item>
     </style>
 
@@ -112,7 +113,7 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">1dp</item>
         <item name="android:layout_marginStart">16dp</item>
-        <item name="android:background">@color/divider</item>
+        <item name="android:background">@color/vw_settings_divider</item>
     </style>
 
     <!-- Big, driver-friendly favorite button. -->

@@ -4,10 +4,9 @@
 package com.dashline.launcher
 
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import com.dashline.launcher.databinding.ActivityAppPickerBinding
 
@@ -17,12 +16,19 @@ import com.dashline.launcher.databinding.ActivityAppPickerBinding
  */
 class AppPickerActivity : BaseActivity() {
 
+    override val usesUserGradient: Boolean = false
+
     private lateinit var binding: ActivityAppPickerBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAppPickerBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.header.root.setBackgroundColor(ContextCompat.getColor(this, R.color.vw_settings_surface))
+        binding.header.pageTitle.setTextColor(ContextCompat.getColor(this, R.color.vw_settings_primary))
+        binding.header.navBack.setColorFilter(ContextCompat.getColor(this, R.color.vw_settings_accent))
+        binding.header.navHome.setColorFilter(ContextCompat.getColor(this, R.color.vw_settings_accent))
 
         val role = intent.getStringExtra(EXTRA_ROLE) ?: Prefs.ROLE_PHONE
         binding.header.pageTitle.text = titleForRole(role)

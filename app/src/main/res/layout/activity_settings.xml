@@ -3,11 +3,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/bg">
+    android:background="@drawable/vw_settings_background">
 
     <include
         android:id="@+id/header"
         layout="@layout/view_page_header" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/vw_settings_accent" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -16,73 +21,19 @@
         android:clipToPadding="false"
         android:paddingStart="16dp"
         android:paddingEnd="16dp"
-        android:paddingBottom="16dp">
+        android:paddingBottom="20dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!-- ===== General ===== -->
             <TextView style="@style/SettingsSection" android:text="@string/section_general" />
 
             <LinearLayout style="@style/SettingsGroup">
-
                 <LinearLayout android:id="@+id/rowLanguage" style="@style/SettingsRow">
                     <TextView style="@style/SettingsRowTitle" android:text="@string/settings_language" />
                     <TextView android:id="@+id/languageValue" style="@style/SettingsRowValue" />
-                </LinearLayout>
-
-                <View style="@style/SettingsDivider" />
-
-                <LinearLayout android:id="@+id/rowTheme" style="@style/SettingsRow">
-                    <TextView style="@style/SettingsRowTitle" android:text="@string/settings_theme" />
-                    <TextView android:id="@+id/themeValue" style="@style/SettingsRowValue" />
-                </LinearLayout>
-
-                <View style="@style/SettingsDivider" />
-                <LinearLayout android:id="@+id/rowCustomize" style="@style/SettingsRow">
-                    <TextView style="@style/SettingsRowTitle" android:text="@string/settings_customize" />
-                </LinearLayout>
-
-                <View style="@style/SettingsDivider" />
-
-                <LinearLayout android:id="@+id/rowClockStyle" style="@style/SettingsRow">
-                    <TextView style="@style/SettingsRowTitle" android:text="@string/settings_clock_style" />
-                    <TextView android:id="@+id/clockStyleValue" style="@style/SettingsRowValue" />
-                </LinearLayout>
-
-                <View style="@style/SettingsDivider" />
-
-                <LinearLayout android:id="@+id/rowChrono" style="@style/SettingsRow">
-                    <TextView style="@style/SettingsRowTitle" android:text="@string/settings_chrono" />
-                    <TextView android:id="@+id/chronoValue" style="@style/SettingsRowValue" />
-                </LinearLayout>
-
-                <View style="@style/SettingsDivider" />
-
-                <LinearLayout android:id="@+id/rowTabs" style="@style/SettingsRow">
-                    <TextView style="@style/SettingsRowTitle" android:text="@string/settings_tabs" />
-                    <TextView android:id="@+id/tabsValue" style="@style/SettingsRowValue" />
-                </LinearLayout>
-
-                <View style="@style/SettingsDivider" />
-
-                <LinearLayout android:id="@+id/rowGradient" style="@style/SettingsRow">
-                    <TextView style="@style/SettingsRowTitle" android:text="@string/settings_gradient" />
-                    <View
-                        android:id="@+id/gradientSwatch"
-                        android:layout_width="36dp"
-                        android:layout_height="22dp"
-                        android:layout_marginStart="12dp" />
-                    <TextView android:id="@+id/gradientValue" style="@style/SettingsRowValue" />
-                </LinearLayout>
-
-                <View style="@style/SettingsDivider" />
-
-                <LinearLayout android:id="@+id/rowTempUnit" style="@style/SettingsRow">
-                    <TextView style="@style/SettingsRowTitle" android:text="@string/settings_temp_unit" />
-                    <TextView android:id="@+id/tempUnitValue" style="@style/SettingsRowValue" />
                 </LinearLayout>
 
                 <View style="@style/SettingsDivider" />
@@ -93,11 +44,9 @@
                 </LinearLayout>
             </LinearLayout>
 
-            <!-- ===== Default apps ===== -->
             <TextView style="@style/SettingsSection" android:text="@string/section_apps" />
 
             <LinearLayout style="@style/SettingsGroup">
-
                 <LinearLayout android:id="@+id/rowPhone" style="@style/SettingsRow">
                     <TextView style="@style/SettingsRowTitle" android:text="@string/settings_phone_app" />
                     <TextView android:id="@+id/phoneValue" style="@style/SettingsRowValue" />
@@ -130,20 +79,11 @@
                     <TextView style="@style/SettingsRowTitle" android:text="@string/settings_android_auto_app" />
                     <TextView android:id="@+id/androidAutoValue" style="@style/SettingsRowValue" />
                 </LinearLayout>
-
-                <View style="@style/SettingsDivider" />
-
-                <LinearLayout android:id="@+id/rowCarPlay" style="@style/SettingsRow">
-                    <TextView style="@style/SettingsRowTitle" android:text="@string/settings_carplay_app" />
-                    <TextView android:id="@+id/carPlayValue" style="@style/SettingsRowValue" />
-                </LinearLayout>
             </LinearLayout>
 
-            <!-- ===== Permissions ===== -->
             <TextView style="@style/SettingsSection" android:text="@string/section_access" />
 
             <LinearLayout style="@style/SettingsGroup">
-
                 <LinearLayout android:id="@+id/rowLocationAccess" style="@style/SettingsRow">
                     <TextView style="@style/SettingsRowTitle" android:text="@string/settings_location_access" />
                     <TextView android:id="@+id/locationAccessValue" style="@style/SettingsRowValue" />
@@ -157,37 +97,27 @@
                 </LinearLayout>
             </LinearLayout>
 
-            <!-- ===== App drawer ===== -->
             <TextView style="@style/SettingsSection" android:text="@string/section_drawer" />
 
             <LinearLayout style="@style/SettingsGroup">
-
                 <LinearLayout android:id="@+id/rowResetHidden" style="@style/SettingsRow">
                     <TextView style="@style/SettingsRowTitle" android:text="@string/settings_reset_hidden" />
                     <TextView android:id="@+id/resetHiddenValue" style="@style/SettingsRowValue" />
                 </LinearLayout>
             </LinearLayout>
 
-            <!-- ===== About ===== -->
             <TextView style="@style/SettingsSection" android:text="@string/section_about" />
 
             <LinearLayout style="@style/SettingsGroup">
-
-                <LinearLayout android:id="@+id/rowVersion" style="@style/SettingsRow">
+                <LinearLayout
+                    android:id="@+id/rowVersion"
+                    style="@style/SettingsRow"
+                    android:clickable="false"
+                    android:focusable="false">
                     <TextView style="@style/SettingsRowTitle" android:text="@string/settings_version" />
                     <TextView android:id="@+id/versionValue" style="@style/SettingsRowValue" />
                 </LinearLayout>
-
-                <View android:id="@+id/updateDivider" style="@style/SettingsDivider" />
-
-                <!-- Sideloaded builds only; hidden in the Play build, which updates
-                     through Play. -->
-                <LinearLayout android:id="@+id/rowCheckUpdates" style="@style/SettingsRow">
-                    <TextView style="@style/SettingsRowTitle" android:text="@string/settings_check_updates" />
-                    <TextView android:id="@+id/checkUpdatesValue" style="@style/SettingsRowValue" />
-                </LinearLayout>
             </LinearLayout>
-
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

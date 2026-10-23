@@ -26,8 +26,8 @@ val hasReleaseSigning = releaseStoreFile != null && releaseStorePassword != null
 
 // Release builds get their version from the git tag (see .github/workflows/release.yml);
 // local builds fall back to these defaults.
-val appVersionName = (project.findProperty("appVersionName") as String?) ?: "0.4.7"
-val appVersionCode = (project.findProperty("appVersionCode") as String?)?.toIntOrNull() ?: 11
+val appVersionName = (project.findProperty("appVersionName") as String?) ?: "0.4.8"
+val appVersionCode = (project.findProperty("appVersionCode") as String?)?.toIntOrNull() ?: 408
 
 android {
     namespace = "com.dashline.launcher"
