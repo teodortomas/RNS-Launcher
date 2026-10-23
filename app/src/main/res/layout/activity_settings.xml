@@ -151,13 +151,6 @@
 
                 <View style="@style/SettingsDivider" />
 
-                <LinearLayout android:id="@+id/rowNotificationAccess" style="@style/SettingsRow">
-                    <TextView style="@style/SettingsRowTitle" android:text="@string/settings_notification_access" />
-                    <TextView android:id="@+id/notificationAccessValue" style="@style/SettingsRowValue" />
-                </LinearLayout>
-
-                <View style="@style/SettingsDivider" />
-
                 <LinearLayout android:id="@+id/rowDefaultLauncher" style="@style/SettingsRow">
                     <TextView style="@style/SettingsRowTitle" android:text="@string/settings_default_launcher" />
                     <TextView android:id="@+id/defaultLauncherValue" style="@style/SettingsRowValue" />

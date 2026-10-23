@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Spouštěč Golf 6</string>
+    <string name="home_brand">GOLF VI</string>
+    <string name="home_subtitle">INFOTAINMENT</string>
+    <string name="home_menu">HLAVNÍ MENU</string>
+    <string name="home_radio">RÁDIO</string>
+    <string name="home_media">MÉDIA</string>
+    <string name="home_phone">TELEFON</string>
+    <string name="home_navigation">NAVIGACE</string>
+    <string name="home_app_connect">APP-CONNECT</string>
+    <string name="home_apps">APLIKACE</string>
+    <string name="home_gps_label">GPS</string>
+    <string name="home_settings">Nastavení</string>
+    <string name="home_footer">OSOBNÍ INFOTAINMENT</string>
+    <string name="home_pick_app">Vyberte aplikaci pro %1$s</string>
+    <string name="home_launch_failed">Nepodařilo se otevřít aplikaci %1$s</string>
+    <string name="home_unassigned">VYBRAT APLIKACI</string>
+
+    <!-- Dolní navigace -->
+    <string name="tab_audio">Média</string>
+    <string name="tab_phone">Telefon</string>
+    <string name="tab_nav">Navigace</string>
+    <string name="tab_apps">Aplikace</string>
+    <string name="tab_settings">Nastavení</string>
+
+    <!-- Seznam aplikací -->
+    <string name="all_apps">Všechny aplikace</string>
+    <string name="no_apps">Nebyly nalezeny žádné aplikace ke spuštění</string>
+    <string name="app_icon">Ikona aplikace</string>
+    <string name="search_apps">Hledat aplikace</string>
+    <string name="frequent">Často používané</string>
+    <string name="hide_app">Skrýt v seznamu aplikací</string>
+    <string name="settings_reset_hidden">Obnovit skryté aplikace</string>
+    <string name="couldnt_launch">Aplikaci %1$s se nepodařilo spustit</string>
+    <string name="hidden_count">Skryto: %1$d</string>
+
+    <!-- Výběr zvuku -->
+    <string name="audio_radio">Rádio</string>
+
+    <!-- Přehrávání médií -->
+    <string name="media_previous">Předchozí</string>
+    <string name="media_play_pause">Přehrát nebo pozastavit</string>
+    <string name="media_next">Další</string>
+    <string name="media_nothing_playing">Nic se nepřehrává</string>
+    <string name="media_tap_to_open">Klepnutím otevřete</string>
+    <string name="media_enable_access">Klepnutím povolíte přístup k informacím o médiích</string>
+
+    <!-- Názvy značek se nepřekládají -->
+    <string name="shortcut_android_auto">Android Auto</string>
+    <string name="shortcut_carplay">CarPlay</string>
+
+    <!-- Předpověď počasí -->
+    <string name="forecast_high_low">%1$s / %2$s</string>
+
+    <!-- První spuštění -->
+    <string name="setup_title">Vítejte</string>
+    <string name="setup_subtitle">Nastavme váš launcher.</string>
+    <string name="setup_choose_phone">Vyberte aplikaci Telefon</string>
+    <string name="setup_choose_nav">Vyberte navigační aplikaci</string>
+    <string name="setup_choose_media">Vyberte mediální aplikaci</string>
+    <string name="setup_choose_language">Vyberte jazyk</string>
+    <string name="setup_done">Hotovo</string>
+    <string name="not_set">Nenastaveno</string>
+    <string name="setup_permissions">Oprávnění</string>
+    <string name="setup_permissions_hint">Poloha umožňuje zobrazovat místní počasí a rychlost GPS.</string>
+    <string name="settings_location_access">Přístup k poloze</string>
+    <string name="access_granted">Povoleno</string>
+    <string name="access_needed">Klepněte pro povolení</string>
+
+    <!-- Nastavení -->
+    <string name="settings_title">Nastavení launcheru</string>
+    <string name="section_general">OBECNÉ</string>
+    <string name="section_apps">VÝCHOZÍ APLIKACE</string>
+    <string name="section_access">OPRÁVNĚNÍ</string>
+    <string name="section_drawer">SEZNAM APLIKACÍ</string>
+    <string name="settings_language">Jazyk</string>
+    <string name="language_system">Podle systému</string>
+    <string name="settings_phone_app">Telefonní aplikace</string>
+    <string name="settings_nav_app">Navigační aplikace</string>
+    <string name="settings_radio_app">Rádiová aplikace</string>
+    <string name="settings_media_app">Mediální aplikace (když nic nehraje)</string>
+    <string name="settings_android_auto_app">Aplikace Android Auto</string>
+    <string name="settings_carplay_app">Aplikace CarPlay</string>
+    <string name="settings_notification_access">Přístup k informacím o médiích</string>
+    <string name="access_enabled">Zapnuto</string>
+    <string name="access_disabled">Vypnuto — klepnutím zapnete</string>
+    <string name="settings_temp_unit">Jednotka teploty</string>
+    <string name="unit_celsius">Celsius (°C)</string>
+    <string name="unit_fahrenheit">Fahrenheit (°F)</string>
+    <string name="settings_theme">Motiv</string>
+    <string name="settings_customize">Přizpůsobit domovskou obrazovku</string>
+    <string name="customize_hint">Přetažením oddělovače změníte velikost karet.</string>
+    <string name="customize_hint_split">Karta médií: %1$d%% sloupce. Přetažením oddělovače upravíte velikost.</string>
+    <string name="customize_hint_portrait">Na výšku se karty skládají pod sebe, jejich velikost lze nastavit na šířku.</string>
+    <string name="customize_swap">Prohodit</string>
+    <string name="customize_second_card">Druhá karta</string>
+    <string name="customize_reset">Obnovit výchozí</string>
+    <string name="customize_pick_widget">Vybrat widget</string>
+    <string name="customize_sample_date">pondělí 1. ledna</string>
+    <string name="customize_sample_track">Ukázková skladba</string>
+    <string name="customize_sample_artist">Interpret</string>
+    <string name="second_widget">Widget</string>
+    <string name="settings_second_card">Druhá karta</string>
+    <string name="second_phone">Telefon</string>
+    <string name="second_shortcuts">Zkratky aplikací</string>
+    <string name="settings_clock_style">Styl hodin</string>
+    <string name="clock_digital">Digitální</string>
+    <string name="clock_analog">Analogové</string>
+    <string name="clock_minimal">Minimalistické</string>
+    <string name="settings_chrono">Stopky</string>
+    <string name="chrono_start_stop">Spustit nebo zastavit</string>
+    <string name="chrono_reset">Vynulovat</string>
+    <string name="settings_tabs">Dolní navigace</string>
+    <string name="section_tabs">KARTY</string>
+    <string name="tabs_hint">Změňte pořadí položek na dolní liště nebo skryjte ty, které nepotřebujete.</string>
+    <string name="tabs_count">Zobrazeno: %1$d</string>
+    <string name="tabs_reset">Obnovit výchozí pořadí</string>
+    <string name="tab_move_up">Posunout nahoru</string>
+    <string name="tab_move_down">Posunout dolů</string>
+    <string name="tab_toggle_visible">Zobrazit nebo skrýt</string>
+    <string name="settings_gradient">Barevný motiv</string>
+    <string name="section_appearance">VZHLED</string>
+    <string name="gradient_preview_hint">Náhled vybraných barev</string>
+    <string name="gradient_midnight">Půlnoc</string>
+    <string name="gradient_ocean">Oceán</string>
+    <string name="gradient_sunset">Západ slunce</string>
+    <string name="gradient_forest">Les</string>
+    <string name="gradient_violet">Fialová</string>
+    <string name="gradient_crimson">Karmínová</string>
+    <string name="gradient_graphite">Grafitová</string>
+    <string name="theme_auto">Automaticky (podle denní doby)</string>
+    <string name="theme_light">Světlý</string>
+    <string name="theme_dark">Tmavý</string>
+    <string name="theme_system">Podle systému</string>
+    <string name="settings_keep_on">Nezhasínat obrazovku</string>
+    <string name="settings_default_launcher">Výchozí launcher</string>
+    <string name="on">Zapnuto</string>
+    <string name="off">Vypnuto</string>
+    <string name="yes">Ano</string>
+    <string name="set_now">Není nastaveno — klepnutím nastavíte</string>
+
+    <!-- Počasí -->
+    <string name="weather_unavailable">Počasí není dostupné</string>
+    <string name="weather_loading">Načítání počasí…</string>
+    <string name="wx_clear">Jasno</string>
+    <string name="wx_mainly_clear">Převážně jasno</string>
+    <string name="wx_partly_cloudy">Částečně oblačno</string>
+    <string name="wx_overcast">Zataženo</string>
+    <string name="wx_fog">Mlha</string>
+    <string name="wx_drizzle">Mrholení</string>
+    <string name="wx_rain">Déšť</string>
+    <string name="wx_snow">Sněžení</string>
+    <string name="wx_showers">Přeháňky</string>
+    <string name="wx_thunderstorm">Bouřka</string>
+
+    <!-- Oblíbené aplikace -->
+    <string name="pick_favorite">Vybrat oblíbenou aplikaci</string>
+    <string name="fav_change">Změnit aplikaci</string>
+    <string name="fav_remove">Odebrat</string>
+
+    <!-- Hlasitost -->
+    <string name="volume_mute">Ztlumit nebo zapnout zvuk</string>
+
+    <!-- Navigace v aplikaci -->
+    <string name="nav_back">Zpět</string>
+    <string name="nav_home">Domů</string>
+
+    <!-- Ostatní -->
+    <string name="pick_an_app">Vyberte aplikaci</string>
+    <string name="app_not_found">Aplikace nebyla nalezena — vyberte ji v Nastavení</string>
+    <string name="now_playing">Právě se přehrává</string>
+    <string name="widget_none">V tomto zařízení nejsou dostupné žádné widgety</string>
+    <string name="drawer_page">Stránka %1$d z %2$d</string>
+    <string name="customize_media_card">Karta médií</string>
+    <string name="card_media_player">Přehrávač médií</string>
+    <string name="widget_add">Přidat widget</string>
+    <string name="widget_change">Změnit</string>
+    <string name="widget_remove">Odebrat</string>
+    <string name="widget_full">Do karty lze přidat nejvýše %1$d widgetů</string>
+    <string name="customize_favorites">Oblíbené</string>
+    <string name="favorites_slots">Počet pozic</string>
+    <string name="favorites_size">Velikost ikon</string>
+    <string name="size_small">Malá</string>
+    <string name="size_medium">Střední</string>
+    <string name="size_large">Velká</string>
+    <string name="favorites_option">%1$s: %2$s</string>
+    <string name="customize_clock_panel">Panel hodin</string>
+    <string name="card_clock">Hodiny</string>
+    <string name="card_weather">Počasí</string>
+    <string name="customize_panel_landscape">Na výšku lze hodiny nebo počasí nahradit widgety.</string>
+    <string name="card_hidden">Skryto</string>
+    <string name="customize_projection">Řádek zkratek</string>
+    <string name="customize_hint_no_split">Jedna karta je skrytá, druhá proto zabírá celý sloupec.</string>
+    <string name="update_title">Je k dispozici verze %1$s</string>
+    <string name="update_install">Aktualizovat</string>
+    <string name="update_later">Později</string>
+    <string name="update_skip">Přeskočit tuto verzi</string>
+    <string name="update_no_notes">Je k dispozici novější verze.</string>
+    <string name="update_downloading">Stahování aktualizace…</string>
+    <string name="update_allow_title">Jednorázové oprávnění</string>
+    <string name="update_allow_body">Android musí před instalací aktualizace povolit instalaci z tohoto zdroje. Zapněte možnost „Povolit z tohoto zdroje“ a aktualizaci spusťte znovu.</string>
+    <string name="update_allow_open">Otevřít nastavení</string>
+    <string name="update_failed_title">Aktualizaci se nepodařilo nainstalovat</string>
+    <string name="update_failed_body">Stahování se nezdařilo nebo se nespustil instalátor. APK můžete stáhnout na stránce vydání.</string>
+    <string name="update_open_page">Otevřít stránku vydání</string>
+    <string name="update_no_browser">V tomto zařízení není prohlížeč — APK stáhněte v telefonu nebo počítači.</string>
+    <string name="section_about">O APLIKACI</string>
+    <string name="settings_version">Verze</string>
+    <string name="settings_version_value">%1$s (%2$d)</string>
+    <string name="settings_check_updates">Zkontrolovat aktualizace</string>
+    <string name="update_checking">Kontrola…</string>
+    <string name="update_up_to_date">Používáte aktuální verzi</string>
+    <string name="update_never_checked">Zatím nekontrolováno</string>
+    <string name="update_checked_recently">Zkontrolováno právě teď</string>
+    <string name="update_checked_hours">Naposledy zkontrolováno před %1$d h</string>
+    <string name="update_checked_days">Naposledy zkontrolováno před %1$d d</string>
+    <string name="widget_unavailable">Widget není dostupný</string>
+    <string name="widget_add_failed_title">Widget se nepodařilo přidat</string>
+    <string name="widget_fail_permission">Android vyžaduje povolení pro každý widget, ale nebylo uděleno. Zkuste to znovu a zvolte Vytvořit.</string>
+    <string name="widget_fail_unsupported">Tato verze Androidu nemá obrazovku pro povolení widgetů, takže je v tomto zařízení nelze přidat.</string>
+    <string name="widget_fail_slot">Android neuvolnil místo pro widget. Obvykle pomůže restart zařízení.</string>
+    <string name="widget_fail_setup">Aplikace %1$s před dokončením zavřela vlastní obrazovku nastavení, takže se nic nepřidalo.</string>
+    <string name="widget_fail_bind">Widget aplikace %1$s se nepodařilo připojit. Její aplikace se možná aktualizovala — zkuste to za chvíli znovu.</string>
+</resources>

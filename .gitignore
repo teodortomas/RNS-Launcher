@@ -43,3 +43,6 @@ signing.properties
 docs/play-store-listing.md
 docs/store/
 NOTES-*.md
+
+# Local design references; their image rights are separate from the app source.
+/downloaded_images/

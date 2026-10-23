@@ -29,7 +29,7 @@ import java.util.Locale
  * weather panel on the left, a media + phone panel on the right, and a bottom
  * tab bar.
  */
-class HomeActivity : BaseActivity() {
+class LegacyDashboardActivity : BaseActivity() {
 
     private lateinit var binding: ActivityHomeBinding
     private lateinit var prefs: Prefs

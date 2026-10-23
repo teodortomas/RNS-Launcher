@@ -21,7 +21,7 @@ object Permissions {
         Manifest.permission.ACCESS_COARSE_LOCATION
     )
 
-    /** Location is optional — it only powers the weather panel. */
+    /** Optional foreground location for local weather and the live home-screen speed display. */
     fun hasLocation(context: Context): Boolean = LOCATION.any {
         ContextCompat.checkSelfPermission(context, it) == PackageManager.PERMISSION_GRANTED
     }

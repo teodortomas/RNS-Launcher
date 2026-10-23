@@ -186,34 +186,6 @@
             android:textSize="14sp" />
     </LinearLayout>
 
-    <!-- Media info (notification access) -->
-    <LinearLayout
-        android:id="@+id/mediaAccessRow"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="@drawable/card_dark"
-        android:padding="18dp"
-        android:layout_marginBottom="24dp"
-        android:clickable="true"
-        android:focusable="true">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/settings_notification_access"
-            android:textColor="@color/text_primary"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/mediaAccessValue"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/access_needed"
-            android:textColor="@color/text_secondary"
-            android:textSize="14sp" />
-    </LinearLayout>
-
     <TextView
         android:id="@+id/doneButton"
         android:layout_width="wrap_content"

@@ -26,8 +26,8 @@ val hasReleaseSigning = releaseStoreFile != null && releaseStorePassword != null
 
 // Release builds get their version from the git tag (see .github/workflows/release.yml);
 // local builds fall back to these defaults.
-val appVersionName = (project.findProperty("appVersionName") as String?) ?: "0.1.0"
-val appVersionCode = (project.findProperty("appVersionCode") as String?)?.toIntOrNull() ?: 1
+val appVersionName = (project.findProperty("appVersionName") as String?) ?: "0.4.7"
+val appVersionCode = (project.findProperty("appVersionCode") as String?)?.toIntOrNull() ?: 11
 
 android {
     namespace = "com.dashline.launcher"
@@ -131,6 +131,7 @@ dependencies {
     // Pulled in by appcompat anyway; declared so the runtime icon tinting can
     // reference VectorDrawableCompat directly. 1.1.0 still supports minSdk 14.
     implementation("androidx.vectordrawable:vectordrawable:1.1.0")
+    testImplementation("junit:junit:4.13.2")
     // Weather uses the keyless Open-Meteo HTTP API + plain LocationManager, so no
     // Google Play Services / Maps SDK is needed — keeps the widest device support.
 }

@@ -60,9 +60,6 @@ class SettingsActivity : BaseActivity() {
                 else -> Permissions.requestLocation(this, REQ_LOCATION)
             }
         }
-        binding.rowNotificationAccess.setOnClickListener {
-            NotificationAccess.openSettings(this)
-        }
         binding.rowTempUnit.setOnClickListener {
             prefs.useFahrenheit = !prefs.useFahrenheit
             refresh()
@@ -100,7 +97,7 @@ class SettingsActivity : BaseActivity() {
 
     override fun onResume() {
         super.onResume()
-        refresh()  // reflect notification-access / default-launcher changes on return
+        refresh()  // reflect default-launcher changes on return
     }
 
     private fun showLanguageDialog() {
@@ -205,10 +202,6 @@ class SettingsActivity : BaseActivity() {
         binding.locationAccessValue.text = getString(
             if (Permissions.hasLocation(this)) R.string.access_granted
             else R.string.access_needed
-        )
-        binding.notificationAccessValue.text = getString(
-            if (NotificationAccess.isGranted(this)) R.string.access_enabled
-            else R.string.access_disabled
         )
         binding.tempUnitValue.text = getString(
             if (prefs.useFahrenheit) R.string.unit_fahrenheit else R.string.unit_celsius

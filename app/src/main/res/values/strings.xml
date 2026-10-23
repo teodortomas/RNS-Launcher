@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Dashline</string>
+    <string name="app_name">Golf 6 Launcher</string>
+    <string name="home_brand">GOLF VI</string>
+    <string name="home_subtitle">INFOTAINMENT</string>
+    <string name="home_menu">MAIN MENU</string>
+    <string name="home_radio">RADIO</string>
+    <string name="home_media">MEDIA</string>
+    <string name="home_phone">PHONE</string>
+    <string name="home_navigation">NAVIGATION</string>
+    <string name="home_app_connect">APP-CONNECT</string>
+    <string name="home_apps">APPS</string>
+    <string name="home_gps_label">GPS</string>
+    <string name="home_settings">Settings</string>
+    <string name="home_footer">PERSONAL INFOTAINMENT</string>
+    <string name="home_pick_app">Choose an app for %1$s</string>
+    <string name="home_launch_failed">Could not open %1$s</string>
+    <string name="home_unassigned">SELECT APP</string>
 
     <!-- bottom tabs -->
     <string name="tab_audio">Audio</string>
@@ -48,7 +63,7 @@
     <string name="setup_done">Done</string>
     <string name="not_set">Not set</string>
     <string name="setup_permissions">Permissions</string>
-    <string name="setup_permissions_hint">These let the launcher show weather and what\'s playing.</string>
+    <string name="setup_permissions_hint">Location lets the launcher show local weather and GPS speed.</string>
     <string name="settings_location_access">Location access</string>
     <string name="access_granted">Granted</string>
     <string name="access_needed">Tap to grant</string>

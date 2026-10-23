@@ -20,6 +20,7 @@ object LocaleManager {
 
     val LANGUAGES = listOf(
         Lang("en", "English"),
+        Lang("cs", "Čeština"),
         Lang("tr", "Türkçe"),
         Lang("es", "Español"),
         Lang("de", "Deutsch"),

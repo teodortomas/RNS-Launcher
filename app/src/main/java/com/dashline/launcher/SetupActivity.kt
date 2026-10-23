@@ -35,9 +35,6 @@ class SetupActivity : BaseActivity() {
             AppPickerActivity.start(this, Prefs.ROLE_MEDIA, REQ_MEDIA)
         }
         binding.locationRow.setOnClickListener { grantLocation() }
-        binding.mediaAccessRow.setOnClickListener {
-            if (!NotificationAccess.isGranted(this)) NotificationAccess.openSettings(this)
-        }
         binding.doneButton.setOnClickListener {
             prefs.setupDone = true
             // Offer to become the default launcher as the last onboarding step.
@@ -105,7 +102,6 @@ class SetupActivity : BaseActivity() {
         binding.mediaValue.text =
             AppRepository.labelFor(this, prefs.mediaApp) ?: getString(R.string.not_set)
         binding.locationValue.text = accessLabel(Permissions.hasLocation(this))
-        binding.mediaAccessValue.text = accessLabel(NotificationAccess.isGranted(this))
     }
 
     private fun accessLabel(granted: Boolean): String =
