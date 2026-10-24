@@ -28,6 +28,9 @@ jobs:
         with:
           gradle-version: '8.13'
 
+      - name: Run unit tests
+        run: gradle testPlayDebugUnitTest --no-daemon --stacktrace
+
       - name: Build debug APK
         run: gradle assembleDebug --no-daemon --stacktrace
 
@@ -36,13 +39,11 @@ jobs:
       - name: Build release APK (unsigned, verifies R8)
         run: gradle assembleRelease --no-daemon --stacktrace
 
-      # Flavour-qualified task names: lintDebug no longer exists once flavours
-      # are declared. Both variants are checked.
+      # The remaining Play variant is checked; no KitKat/legacy build exists.
       - name: Lint
-        run: gradle lintLegacyDebug lintPlayDebug --no-daemon
+        run: gradle lintPlayDebug --no-daemon
 
-      # assembleDebug/assembleRelease build every flavour, so both the KitKat
-      # (legacy) and Play (minSdk 21) variants are verified on each push.
+      # The one remaining variant targets Android 5.0+ (minSdk 21).
       - name: Upload debug APKs
         uses: actions/upload-artifact@v4
         with:

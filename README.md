@@ -1,6 +1,6 @@
 # Golf 6 Launcher
 
-Personal Android head-unit launcher for a Golf VI, with a dark factory-infotainment-inspired HOME screen. It is a private project and is not affiliated with Volkswagen.
+Personal Android head-unit launcher for a Golf VI, with a dark factory-infotainment-inspired HOME screen. This public project is not affiliated with Volkswagen.
 
 The launcher only opens apps already installed on the radio; it does not implement tuner, CAN, Bluetooth, or Android Auto integration.
 
@@ -21,20 +21,26 @@ The visual direction follows a red-accent RNS reference. Design-reference images
 
 ## Build
 
-Prerequisites: JDK 17 and Android SDK Platform 36 + Build-Tools 36.0.0. Set `ANDROID_HOME` if the SDK is not at `~/Android/Sdk`.
+The remaining Android build targets **Android 5.0+ (API 21)**; Android 4.4 support has been retired. Prerequisites: JDK 17, Gradle 8.13, and Android SDK Platform 36 + Build-Tools 36.0.0. Set `ANDROID_HOME` if the SDK is not at `~/Android/Sdk`.
 
 ```bash
-./gradlew testLegacyDebugUnitTest assembleLegacyDebug
+gradle testPlayDebugUnitTest assemblePlayDebug
 ```
 
 Debug APK:
 
 ```text
-app/build/outputs/apk/legacy/debug/app-legacy-debug.apk
+app/build/outputs/apk/play/debug/app-play-debug.apk
 ```
 
 The APK is not yet tested on the target head unit. Install it, select **Golf 6 Launcher** as the HOME app, and verify the screen ratio, assigned apps and boot behavior. Keep the stock launcher available so it can be selected again if needed.
 
+## GitHub Releases
+
+To publish a signed APK from the GitHub UI, open **Actions → Release → Run workflow**, select `main`, and enter a version such as `0.4.9`. The workflow creates the matching `v0.4.9` tag and GitHub Release, attaches the APK, and stores the Play App Bundle as a workflow artifact. Pushing a `v*` tag also triggers a release.
+
+The workflow needs the repository Actions secrets `KEYSTORE_BASE64`, `KEYSTORE_PASSWORD`, `KEY_ALIAS`, and `KEY_PASSWORD`. Secret values and the signing keystore must never be committed.
+
 ## Source and license
 
-This project started from [Dashline](https://github.com/metehankaygsz/dashline), licensed under GPL-3.0-only; its license and upstream README are retained in this directory. The custom Golf 6 HOME screen is a small local modification. No distribution is intended.
+This project started from [Dashline](https://github.com/metehankaygsz/dashline), licensed under GPL-3.0-only; its license and upstream README are retained in this directory. The custom Golf 6 HOME screen is a small local modification. Signed builds are published on the repository's GitHub Releases page.

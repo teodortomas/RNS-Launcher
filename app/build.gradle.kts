@@ -26,8 +26,8 @@ val hasReleaseSigning = releaseStoreFile != null && releaseStorePassword != null
 
 // Release builds get their version from the git tag (see .github/workflows/release.yml);
 // local builds fall back to these defaults.
-val appVersionName = (project.findProperty("appVersionName") as String?) ?: "0.4.8"
-val appVersionCode = (project.findProperty("appVersionCode") as String?)?.toIntOrNull() ?: 408
+val appVersionName = (project.findProperty("appVersionName") as String?) ?: "0.4.9"
+val appVersionCode = (project.findProperty("appVersionCode") as String?)?.toIntOrNull() ?: 409
 
 android {
     namespace = "com.dashline.launcher"
@@ -36,9 +36,8 @@ android {
 
     defaultConfig {
         applicationId = "com.dashline.launcher"
-        // Per-flavour minSdk below. A low minSdk doesn't conflict with a high
-        // targetSdk — the app still installs on old devices.
-        minSdk = 19
+        // Android 4.4 support is retired; all published builds require Android 5.0+.
+        minSdk = 21
         targetSdk = 36
         versionCode = appVersionCode
         versionName = appVersionName
@@ -47,24 +46,12 @@ android {
         vectorDrawables.useSupportLibrary = true
     }
 
-    // Google Play's installer requires minSdk 21+, but plenty of cheap head units
-    // still run Android 4.4. Two flavours keep both audiences:
-    //   legacy -> sideloaded APK on GitHub Releases, supports KitKat
-    //   play   -> App Bundle for the Play Store, minSdk 21
-    // Same applicationId, so a device only ever sees one of them as "the app".
+    // Keep one Android 5.0+ distribution variant. The former KitKat sideload
+    // flavour and its self-updater are retired; GitHub Releases now use this APK.
     flavorDimensions += "distribution"
     productFlavors {
-        create("legacy") {
-            dimension = "distribution"
-            minSdk = 19
-            // Only this flavour offers its own updates: it's the one distributed
-            // outside a store, and the Play build is signed with a different key
-            // so it could not install these APKs anyway.
-            buildConfigField("boolean", "UPDATE_CHECK", "true")
-        }
         create("play") {
             dimension = "distribution"
-            minSdk = 21
             buildConfigField("boolean", "UPDATE_CHECK", "false")
         }
     }
@@ -120,10 +107,8 @@ android {
 }
 
 dependencies {
-    // Keep deps minimal — many cheap units lack Play Services and are slow.
-    // These versions are the newest that still support minSdk 19 (KitKat).
-    // Do NOT bump to appcompat 1.6+ / core 1.10+ — they require minSdk 21 and
-    // will break the KitKat build.
+    // Keep deps minimal — many head units lack Play Services and are slow.
+    // The app uses the platform LocationManager and does not require Play Services.
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.appcompat:appcompat:1.4.2")
     implementation("androidx.recyclerview:recyclerview:1.2.1")
