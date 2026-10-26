@@ -7,50 +7,8 @@
         <item name="colorAccent">@color/vw_settings_accent</item>
     </style>
 
-    <!-- Action button along the bottom of the Customize screen. -->
-    <style name="CustomizeButton">
-        <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_weight">1</item>
-        <item name="android:layout_marginStart">4dp</item>
-        <item name="android:layout_marginEnd">4dp</item>
-        <item name="android:background">@drawable/card_dark</item>
-        <item name="android:gravity">center</item>
-        <item name="android:minHeight">48dp</item>
-        <item name="android:padding">10dp</item>
-        <item name="android:textColor">@color/text_primary</item>
-        <item name="android:textSize">14sp</item>
-        <item name="android:clickable">true</item>
-        <item name="android:focusable">true</item>
-    </style>
 
-    <!-- Android Auto / CarPlay shortcut tile under the weather. -->
-    <style name="ProjectionTile">
-        <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_weight">1</item>
-        <item name="android:layout_marginStart">4dp</item>
-        <item name="android:layout_marginEnd">4dp</item>
-        <item name="android:orientation">horizontal</item>
-        <item name="android:gravity">center</item>
-        <item name="android:minHeight">44dp</item>
-        <item name="android:paddingStart">10dp</item>
-        <item name="android:paddingEnd">10dp</item>
-        <item name="android:background">@drawable/card_dark</item>
-        <item name="android:clickable">true</item>
-        <item name="android:focusable">true</item>
-    </style>
 
-    <!-- One day in the weather forecast strip. -->
-    <style name="FcCell">
-        <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_weight">1</item>
-        <item name="android:orientation">vertical</item>
-        <item name="android:gravity">center_horizontal</item>
-        <item name="android:paddingStart">4dp</item>
-        <item name="android:paddingEnd">4dp</item>
-    </style>
 
 
     <!-- Settings: a small caps-ish header above each group of rows. -->
@@ -116,20 +74,4 @@
         <item name="android:background">@color/vw_settings_divider</item>
     </style>
 
-    <!-- Big, driver-friendly favorite button. -->
-    <style name="FavoriteTile">
-        <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_weight">1</item>
-        <item name="android:layout_marginStart">6dp</item>
-        <item name="android:layout_marginEnd">6dp</item>
-        <item name="android:background">@drawable/tile_bg</item>
-        <item name="android:gravity">center</item>
-        <item name="android:minHeight">88dp</item>
-        <item name="android:padding">12dp</item>
-        <item name="android:textColor">@color/text_primary</item>
-        <item name="android:textSize">18sp</item>
-        <item name="android:clickable">true</item>
-        <item name="android:focusable">true</item>
-    </style>
 </resources>
