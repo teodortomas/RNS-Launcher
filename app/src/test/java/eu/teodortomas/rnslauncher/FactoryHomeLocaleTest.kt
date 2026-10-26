@@ -29,11 +29,11 @@ class FactoryHomeLocaleTest {
         while (directory != null) {
             val candidate = File(
                 directory,
-                "app/src/main/java/eu/teodortomas/rnslauncher/FactoryHomeActivity.kt"
+                "app/src/main/java/eu/teodortomas/rnslauncher/HomeActivity.kt"
             )
             if (candidate.isFile) return candidate
             directory = directory.parentFile
         }
-        error("Could not locate FactoryHomeActivity.kt from the test working directory")
+        error("Could not locate HomeActivity.kt from the test working directory")
     }
 }
