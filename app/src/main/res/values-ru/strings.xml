@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Dashline</string>
+    <string name="app_name">RNS Launcher</string>
 
     <string name="tab_audio">Аудио</string>
     <string name="tab_phone">Телефон</string>
@@ -169,7 +169,7 @@
     <string name="update_no_notes">Доступна более новая версия.</string>
     <string name="update_downloading">Загрузка обновления…</string>
     <string name="update_allow_title">Разовое разрешение</string>
-    <string name="update_allow_body">Android требует разрешения, чтобы Dashline мог установить обновление. Включите «Разрешить из этого источника» и запустите обновление снова.</string>
+    <string name="update_allow_body">Android требует разрешения, чтобы RNS Launcher мог установить обновление. Включите «Разрешить из этого источника» и запустите обновление снова.</string>
     <string name="update_allow_open">Открыть настройки</string>
     <string name="update_failed_title">Не удалось установить обновление</string>
     <string name="update_failed_body">Загрузка или установщик не запустились. APK можно скачать со страницы релиза.</string>

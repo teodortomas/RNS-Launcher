@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Dashline</string>
+    <string name="app_name">RNS Launcher</string>
 
     <!-- alt sekmeler -->
     <string name="tab_audio">Ses</string>
@@ -178,7 +178,7 @@
     <string name="update_no_notes">Daha yeni bir sürüm mevcut.</string>
     <string name="update_downloading">Güncelleme indiriliyor…</string>
     <string name="update_allow_title">Tek seferlik izin</string>
-    <string name="update_allow_body">Dashline\'ın güncellemeyi kurabilmesi için Android izin istiyor. &quot;Bu kaynağa izin ver&quot; seçeneğini açın, sonra güncellemeyi yeniden başlatın.</string>
+    <string name="update_allow_body">RNS Launcher\'ın güncellemeyi kurabilmesi için Android izin istiyor. &quot;Bu kaynağa izin ver&quot; seçeneğini açın, sonra güncellemeyi yeniden başlatın.</string>
     <string name="update_allow_open">Ayarları aç</string>
     <string name="update_failed_title">Güncelleme kurulamadı</string>
     <string name="update_failed_body">İndirme veya kurulum başlamadı. APK\'yı sürüm sayfasından da indirebilirsiniz.</string>

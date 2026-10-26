@@ -16,5 +16,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Dashline"
+rootProject.name = "RNS-Launcher"
 include(":app")

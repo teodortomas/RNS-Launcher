@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Dashline</string>
+    <string name="app_name">RNS Launcher</string>
 
     <string name="tab_audio">الصوت</string>
     <string name="tab_phone">الهاتف</string>
@@ -169,7 +169,7 @@
     <string name="update_no_notes">يتوفر إصدار أحدث.</string>
     <string name="update_downloading">جارٍ تنزيل التحديث…</string>
     <string name="update_allow_title">إذن لمرة واحدة</string>
-    <string name="update_allow_body">يطلب Android إذنك حتى يتمكن Dashline من تثبيت التحديث. فعّل &quot;السماح من هذا المصدر&quot; ثم ابدأ التحديث مجددًا.</string>
+    <string name="update_allow_body">يطلب Android إذنك حتى يتمكن RNS Launcher من تثبيت التحديث. فعّل &quot;السماح من هذا المصدر&quot; ثم ابدأ التحديث مجددًا.</string>
     <string name="update_allow_open">فتح الإعدادات</string>
     <string name="update_failed_title">تعذّر تثبيت التحديث</string>
     <string name="update_failed_body">لم يبدأ التنزيل أو المُثبّت. يمكنك الحصول على ملف APK من صفحة الإصدار.</string>
