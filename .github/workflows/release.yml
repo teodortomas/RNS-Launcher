@@ -30,7 +30,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # Full history so the notes can be diffed against the previous tag.
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Verify signing secrets are present
         env:
@@ -128,6 +131,37 @@ jobs:
           path: dist/*.aab
           if-no-files-found: error
 
+      # Commit subjects only: this is a personal project, so the release page
+      # skips GitHub's generated "by @user" / "New Contributors" sections and
+      # carries no install instructions — it is installed like any other app.
+      - name: Compose release notes
+        env:
+          RELEASE_TAG: ${{ steps.version.outputs.tag }}
+        run: |
+          PREVIOUS=$(git tag --sort=-v:refname | grep -vx "$RELEASE_TAG" | head -1 || true)
+          # Prefer the tag itself when it already exists (tag pushes, re-runs),
+          # otherwise fall back to HEAD (manual runs, where the tag is created later).
+          if git rev-parse -q --verify "refs/tags/$RELEASE_TAG" >/dev/null; then
+            END="$RELEASE_TAG"
+          else
+            END="HEAD"
+          fi
+          if [ -n "$PREVIOUS" ]; then
+            RANGE="$PREVIOUS..$END"
+          else
+            RANGE="$END"
+          fi
+          CHANGES=$(git log "$RANGE" --no-merges --pretty=format:'- %s')
+          if [ -z "$CHANGES" ]; then
+            CHANGES="- Maintenance release."
+          fi
+          {
+            echo "## What changed"
+            echo
+            echo "$CHANGES"
+          } > "$RUNNER_TEMP/notes.md"
+          cat "$RUNNER_TEMP/notes.md"
+
       - name: Publish GitHub Release
         uses: softprops/action-gh-release@v2
         with:
@@ -135,10 +169,4 @@ jobs:
           name: ${{ steps.version.outputs.tag }}
           files: dist/*.apk
           fail_on_unmatched_files: true
-          generate_release_notes: true
-          body: |
-            Install on a head unit with:
-
-                adb install -r rns-launcher-${{ steps.version.outputs.tag }}.apk
-
-            Then press Home and choose this launcher.
+          body_path: ${{ runner.temp }}/notes.md
