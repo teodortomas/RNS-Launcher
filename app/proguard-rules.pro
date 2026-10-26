@@ -17,7 +17,6 @@
 
 # Keep the app entry points referenced from AndroidManifest.xml.
 -keep class eu.teodortomas.rnslauncher.App
--keep class eu.teodortomas.rnslauncher.** extends android.app.Activity
 
 # org.json is part of the platform.
 -dontwarn org.json.**

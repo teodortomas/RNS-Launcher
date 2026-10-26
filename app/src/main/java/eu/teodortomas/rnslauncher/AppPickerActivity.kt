@@ -64,7 +64,6 @@ class AppPickerActivity : BaseActivity() {
         Prefs.ROLE_MEDIA -> getString(R.string.settings_media_app)
         Prefs.ROLE_ANDROID_AUTO -> getString(R.string.settings_android_auto_app)
         Prefs.ROLE_CARPLAY -> getString(R.string.settings_carplay_app)
-        Prefs.ROLE_FAVORITE -> getString(R.string.pick_favorite)
         else -> getString(R.string.pick_an_app)
     }
 
