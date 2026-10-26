@@ -23,19 +23,26 @@ import androidx.core.content.ContextCompat
  */
 internal object BrandChrome {
 
-    /** The red the layouts and drawables default to. */
-    private const val STOCK_ACCENT = 0xFFC43A43.toInt()
+    /**
+     * The red the layouts and drawables default to. Read from resources rather
+     * than repeated as a literal: a stale copy here would silently stop the
+     * brand repaint, leaving the Škoda skin with red chrome. Kept equal to
+     * [BrandTheme.VOLKSWAGEN] by a test.
+     */
+    private fun stockAccent(context: Context): Int =
+        ContextCompat.getColor(context, R.color.vw_settings_accent)
 
     private const val ROW_RADIUS_DP = 8f
 
     /** Recolours section headers and the accent bar under the page header. */
     fun tintAccent(root: View, palette: BrandPalette) {
+        val stock = stockAccent(root.context)
         root.forEachDescendant { view ->
             val background = view.background
             when {
-                view is TextView && view.currentTextColor == STOCK_ACCENT ->
+                view is TextView && view.currentTextColor == stock ->
                     view.setTextColor(palette.accent)
-                background is ColorDrawable && background.color == STOCK_ACCENT ->
+                background is ColorDrawable && background.color == stock ->
                     view.setBackgroundColor(palette.accent)
             }
         }
@@ -68,6 +75,26 @@ internal object BrandChrome {
             )
             addState(intArrayOf(), ColorDrawable(Color.TRANSPARENT))
         }
+
+    /**
+     * Search field: the settings surface at rest, and the brand accent as its rim
+     * once it holds focus. The XML default cannot carry the accent, because a
+     * selector's stroke colour is baked in and cannot be recoloured per brand.
+     */
+    fun inputBackground(context: Context, palette: BrandPalette): Drawable {
+        val density = context.resources.displayMetrics.density
+        val radius = ROW_RADIUS_DP * density
+        val stroke = density.toInt().coerceAtLeast(1)
+        val surface = ContextCompat.getColor(context, R.color.vw_settings_surface)
+        val outline = ContextCompat.getColor(context, R.color.vw_settings_outline)
+        return StateListDrawable().apply {
+            addState(
+                intArrayOf(android.R.attr.state_focused),
+                rounded(surface, radius, stroke, palette.accent)
+            )
+            addState(intArrayOf(), rounded(surface, radius, stroke, outline))
+        }
+    }
 
     /** Pressed/focused tile of the app picker: accent rim, brand-tinted fill. */
     fun tileBackground(context: Context, palette: BrandPalette): Drawable {
