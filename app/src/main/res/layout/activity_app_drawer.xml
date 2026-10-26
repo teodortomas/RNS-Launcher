@@ -1,16 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  App drawer: the same fixed VW chrome as Settings and the app picker — dark
+  gradient stage, surface header with the brand accent bar under it, and
+  settings-style cards — rather than the retired pastel gradient the rest of the
+  launcher no longer draws.
+-->
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/bg"
+    android:background="@drawable/vw_settings_background"
     android:focusable="true"
     android:focusableInTouchMode="true">
 
     <include
         android:id="@+id/header"
         layout="@layout/view_page_header" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/vw_settings_accent" />
 
     <!--
       The root above is focusable so it, not this field, takes focus when the
@@ -21,15 +32,18 @@
         android:id="@+id/searchBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:background="@drawable/card_dark"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="14dp"
+        android:background="@drawable/vw_settings_input"
         android:paddingStart="16dp"
         android:paddingEnd="16dp"
         android:paddingTop="12dp"
         android:paddingBottom="12dp"
         android:hint="@string/search_apps"
-        android:textColor="@color/text_primary"
-        android:textColorHint="@color/text_secondary"
+        android:textColor="@color/vw_settings_primary"
+        android:textColorHint="@color/vw_settings_secondary"
+        android:textSize="15sp"
         android:inputType="text"
         android:imeOptions="actionSearch"
         android:maxLines="1"
@@ -37,12 +51,9 @@
 
     <TextView
         android:id="@+id/frequentHeader"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        style="@style/SettingsSection"
+        android:layout_marginStart="20dp"
         android:text="@string/frequent"
-        android:textColor="@color/text_secondary"
-        android:textSize="13sp"
         android:visibility="gone" />
 
     <androidx.recyclerview.widget.RecyclerView
@@ -51,7 +62,7 @@
         android:layout_height="wrap_content"
         android:paddingStart="8dp"
         android:paddingEnd="8dp"
-        android:paddingTop="6dp"
+        android:paddingTop="2dp"
         android:paddingBottom="6dp"
         android:clipToPadding="false"
         android:orientation="horizontal"
@@ -76,8 +87,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@string/no_apps"
-            android:textColor="@color/text_secondary"
-            android:textSize="18sp"
+            android:textColor="@color/vw_settings_secondary"
+            android:textSize="16sp"
             android:visibility="gone" />
     </FrameLayout>
 </LinearLayout>
