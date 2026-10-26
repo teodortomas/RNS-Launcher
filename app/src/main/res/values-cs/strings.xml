@@ -89,6 +89,8 @@
     <string name="unit_celsius">Celsius (°C)</string>
     <string name="unit_fahrenheit">Fahrenheit (°F)</string>
     <string name="settings_theme">Motiv</string>
+    <string name="theme_volkswagen">Volkswagen (červená)</string>
+    <string name="theme_skoda">Škoda (zelená)</string>
     <string name="settings_customize">Přizpůsobit domovskou obrazovku</string>
     <string name="customize_hint">Přetažením oddělovače změníte velikost karet.</string>
     <string name="customize_hint_split">Karta médií: %1$d%% sloupce. Přetažením oddělovače upravíte velikost.</string>

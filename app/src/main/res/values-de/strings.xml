@@ -46,6 +46,8 @@
     <string name="unit_celsius">Celsius (°C)</string>
     <string name="unit_fahrenheit">Fahrenheit (°F)</string>
     <string name="settings_theme">Design</string>
+    <string name="theme_volkswagen">Volkswagen (Rot)</string>
+    <string name="theme_skoda">Škoda (Grün)</string>
     <string name="theme_auto">Automatisch (nach Tageszeit)</string>
     <string name="theme_light">Hell</string>
     <string name="theme_dark">Dunkel</string>

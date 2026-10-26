@@ -26,18 +26,6 @@ class HomeScreenSpecTest {
     }
 
     @Test
-    fun activeAccentUsesVolkswagenRedRatherThanGreenOrBlue() {
-        val color = HomeScreenSpec.accentColor
-        val red = color ushr 16 and 0xFF
-        val green = color ushr 8 and 0xFF
-        val blue = color and 0xFF
-
-        assertTrue(red > 150)
-        assertTrue(green < red / 2)
-        assertTrue(blue < red / 2)
-    }
-
-    @Test
     fun menuLogosOccupyMoreThanHalfOfEachGreyCircle() {
         assertEquals(56, HomeScreenSpec.logoSizeForButton(100))
     }
@@ -87,8 +75,8 @@ class HomeScreenSpecTest {
     }
 
     @Test
-    fun circularButtonsHaveThickerRedAndDarkGreyOutlines() {
-        assertTrue(HomeScreenSpec.circleRedStrokeDp >= 2)
+    fun circularButtonsHaveThickerAccentAndDarkGreyOutlines() {
+        assertTrue(HomeScreenSpec.circleAccentStrokeDp >= 2)
         assertTrue(HomeScreenSpec.circleDarkRimDp >= 4)
     }
 }
