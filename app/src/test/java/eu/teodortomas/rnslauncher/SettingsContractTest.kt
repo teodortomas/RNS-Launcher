@@ -146,7 +146,7 @@ class SettingsContractTest {
     @Test
     fun circularHomeAppliesAndClearsTheKeepScreenOnPreference() {
         val source = findProjectFile(
-            "app/src/main/java/eu/teodortomas/rnslauncher/FactoryHomeActivity.kt"
+            "app/src/main/java/eu/teodortomas/rnslauncher/HomeActivity.kt"
         ).readText()
         val resume = source.substringAfter("override fun onResume()").substringBefore("override fun onPause()")
         val pause = source.substringAfter("override fun onPause()").substringBefore("private fun applyKeepScreenOn()")
