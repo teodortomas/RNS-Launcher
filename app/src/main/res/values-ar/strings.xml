@@ -46,6 +46,8 @@
     <string name="unit_celsius">مئوية (°C)</string>
     <string name="unit_fahrenheit">فهرنهايت (°F)</string>
     <string name="settings_theme">المظهر</string>
+    <string name="theme_volkswagen">Volkswagen (أحمر)</string>
+    <string name="theme_skoda">Škoda (أخضر)</string>
     <string name="theme_auto">تلقائي (حسب الوقت)</string>
     <string name="theme_light">فاتح</string>
     <string name="theme_dark">داكن</string>

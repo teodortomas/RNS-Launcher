@@ -38,6 +38,13 @@
 
                 <View style="@style/SettingsDivider" />
 
+                <LinearLayout android:id="@+id/rowTheme" style="@style/SettingsRow">
+                    <TextView style="@style/SettingsRowTitle" android:text="@string/settings_theme" />
+                    <TextView android:id="@+id/themeValue" style="@style/SettingsRowValue" />
+                </LinearLayout>
+
+                <View style="@style/SettingsDivider" />
+
                 <LinearLayout android:id="@+id/rowKeepOn" style="@style/SettingsRow">
                     <TextView style="@style/SettingsRowTitle" android:text="@string/settings_keep_on" />
                     <TextView android:id="@+id/keepOnValue" style="@style/SettingsRowValue" />

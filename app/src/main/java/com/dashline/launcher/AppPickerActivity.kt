@@ -25,10 +25,12 @@ class AppPickerActivity : BaseActivity() {
         binding = ActivityAppPickerBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val palette = BrandTheme.current(this).palette
         binding.header.root.setBackgroundColor(ContextCompat.getColor(this, R.color.vw_settings_surface))
         binding.header.pageTitle.setTextColor(ContextCompat.getColor(this, R.color.vw_settings_primary))
-        binding.header.navBack.setColorFilter(ContextCompat.getColor(this, R.color.vw_settings_accent))
-        binding.header.navHome.setColorFilter(ContextCompat.getColor(this, R.color.vw_settings_accent))
+        binding.header.navBack.setColorFilter(palette.accent)
+        binding.header.navHome.setColorFilter(palette.accent)
+        BrandChrome.tintAccent(binding.root, palette)
 
         val role = intent.getStringExtra(EXTRA_ROLE) ?: Prefs.ROLE_PHONE
         binding.header.pageTitle.text = titleForRole(role)
@@ -36,14 +38,19 @@ class AppPickerActivity : BaseActivity() {
 
         val prefs = Prefs(this)
         val apps = AppRepository.loadLaunchableApps(this)
-        val adapter = AppAdapter(apps, onClick = { app ->
-            prefs.setForRole(role, app.packageName)
-            setResult(Activity.RESULT_OK, Intent().apply {
-                putExtra(EXTRA_PACKAGE, app.packageName)
-                putExtra(EXTRA_ROLE, role)
-            })
-            finish()
-        })
+        val adapter = AppAdapter(
+            apps,
+            onClick = { app ->
+                prefs.setForRole(role, app.packageName)
+                setResult(Activity.RESULT_OK, Intent().apply {
+                    putExtra(EXTRA_PACKAGE, app.packageName)
+                    putExtra(EXTRA_ROLE, role)
+                })
+                finish()
+            },
+            // Tiles are recycled, so hand each one its own brand-tinted selector.
+            itemBackground = { BrandChrome.tileBackground(this, palette) }
+        )
 
         binding.pickerGrid.layoutManager = GridLayoutManager(this, 5)
         binding.pickerGrid.adapter = adapter

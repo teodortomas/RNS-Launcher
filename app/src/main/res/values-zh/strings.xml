@@ -46,6 +46,8 @@
     <string name="unit_celsius">摄氏度 (°C)</string>
     <string name="unit_fahrenheit">华氏度 (°F)</string>
     <string name="settings_theme">主题</string>
+    <string name="theme_volkswagen">Volkswagen（红色）</string>
+    <string name="theme_skoda">Škoda（绿色）</string>
     <string name="theme_auto">自动（按时间）</string>
     <string name="theme_light">浅色</string>
     <string name="theme_dark">深色</string>
