@@ -110,6 +110,40 @@ class SettingsContractTest {
     }
 
     @Test
+    fun appDrawerUsesTheSameFixedVwPaletteAsSettingsAndPicker() {
+        val activity = findProjectFile(
+            "app/src/main/java/eu/teodortomas/rnslauncher/AppDrawerActivity.kt"
+        ).readText()
+        val layout = findProjectFile("app/src/main/res/layout/activity_app_drawer.xml").readText()
+        assertTrue(activity.contains("override val usesUserGradient: Boolean = false"))
+        assertTrue(layout.contains("@drawable/vw_settings_background"))
+        assertTrue(layout.contains("@color/vw_settings_accent"))
+        assertTrue(layout.contains("@color/vw_settings_primary"))
+        // Tiles and the search field carry the selected brand, not the stock red
+        // baked into the XML drawables.
+        assertTrue(activity.contains("BrandChrome.tileBackground"))
+        assertTrue(activity.contains("BrandChrome.inputBackground"))
+    }
+
+    @Test
+    fun volkswagenSkinKeepsTheSameRedTheLayoutsSpell() {
+        // BrandChrome.tintAccent() compares finished views against the stock red in
+        // colors.xml, so if the palette and the resource drift apart the Škoda skin
+        // silently keeps red chrome. Pin the two together.
+        val colors = findProjectFile("app/src/main/res/values/colors.xml").readText()
+        val stock = Regex("""<color name="vw_settings_accent">#([0-9A-Fa-f]{6})</color>""")
+            .find(colors)?.groupValues?.get(1)?.uppercase()
+            ?: error("vw_settings_accent missing from colors.xml")
+        val theme = findProjectFile(
+            "app/src/main/java/eu/teodortomas/rnslauncher/BrandTheme.kt"
+        ).readText()
+        assertTrue(
+            "BrandTheme.VOLKSWAGEN must use #$stock like @color/vw_settings_accent",
+            theme.contains("0xFF$stock")
+        )
+    }
+
+    @Test
     fun circularHomeAppliesAndClearsTheKeepScreenOnPreference() {
         val source = findProjectFile(
             "app/src/main/java/eu/teodortomas/rnslauncher/FactoryHomeActivity.kt"

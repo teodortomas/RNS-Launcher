@@ -30,7 +30,7 @@
     <color name="vw_settings_outline">#414649</color>
     <color name="vw_settings_primary">#ECEEEF</color>
     <color name="vw_settings_secondary">#A7ACAF</color>
-    <color name="vw_settings_accent">#C43A43</color>
+    <color name="vw_settings_accent">#CB2026</color>
     <color name="vw_settings_divider">#363A3D</color>
-    <color name="vw_settings_pressed">#35C43A43</color>
+    <color name="vw_settings_pressed">#35CB2026</color>
 </resources>

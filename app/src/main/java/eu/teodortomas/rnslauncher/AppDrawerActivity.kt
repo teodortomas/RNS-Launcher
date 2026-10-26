@@ -14,12 +14,16 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import eu.teodortomas.rnslauncher.databinding.ActivityAppDrawerBinding
 
 /** Grid of every launchable app, with search, a frequently-used strip, and hiding. */
 class AppDrawerActivity : BaseActivity() {
+
+    /** Wears the same fixed VW chrome as Settings and the app picker. */
+    override val usesUserGradient: Boolean = false
 
     private lateinit var binding: ActivityAppDrawerBinding
     private lateinit var prefs: Prefs
@@ -42,12 +46,38 @@ class AppDrawerActivity : BaseActivity() {
         binding.header.pageTitle.setText(R.string.all_apps)
         bindPageNav(binding.header.navBack, binding.header.navHome)
 
-        adapter = AppAdapter(emptyList(), onClick = { launch(it) }, onLongClick = { confirmHide(it) })
-        binding.appGrid.layoutManager = GridLayoutManager(this, 5)
+        // The drawer is part of the same fixed VW family as Settings and the app
+        // picker: surface header, brand accent on the chrome, brand-tinted tiles.
+        // Without this it kept the retired pastel gradient and the stock red tile.
+        val palette = BrandTheme.current(this).palette
+        binding.header.root.setBackgroundColor(
+            ContextCompat.getColor(this, R.color.vw_settings_surface)
+        )
+        binding.header.pageTitle.setTextColor(
+            ContextCompat.getColor(this, R.color.vw_settings_primary)
+        )
+        binding.header.navBack.setColorFilter(palette.accent)
+        binding.header.navHome.setColorFilter(palette.accent)
+        binding.searchBox.background = BrandChrome.inputBackground(this, palette)
+        BrandChrome.tintAccent(binding.root, palette)
+
+        adapter = AppAdapter(
+            emptyList(),
+            onClick = { launch(it) },
+            onLongClick = { confirmHide(it) },
+            // Records per holder, so each recycled tile gets its own tinted selector.
+            itemBackground = { BrandChrome.tileBackground(this, palette) }
+        )
+        binding.appGrid.layoutManager = GridLayoutManager(this, COLUMNS)
         binding.appGrid.adapter = adapter
         binding.appGrid.setHasFixedSize(true)
 
-        frequentAdapter = AppAdapter(emptyList(), onClick = { launch(it) }, itemWidthDp = 88)
+        frequentAdapter = AppAdapter(
+            emptyList(),
+            onClick = { launch(it) },
+            itemWidthDp = 88,
+            itemBackground = { BrandChrome.tileBackground(this, palette) }
+        )
         binding.frequentGrid.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         binding.frequentGrid.adapter = frequentAdapter
@@ -125,5 +155,8 @@ class AppDrawerActivity : BaseActivity() {
 
     private companion object {
         const val FREQUENT_COUNT = 6
+
+        /** Same five-across grid as the app picker, so both screens read alike. */
+        const val COLUMNS = 5
     }
 }
