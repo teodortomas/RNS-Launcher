@@ -39,9 +39,7 @@ scratch/
 keystore.properties
 signing.properties
 
-# Store paperwork and other drafts kept locally, not published with the repo.
-docs/play-store-listing.md
-docs/store/
+# Local drafts kept out of the repo.
 NOTES-*.md
 
 # Local design references; their image rights are separate from the app source.

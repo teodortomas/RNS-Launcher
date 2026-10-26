@@ -5,11 +5,11 @@
 #   ./tools/capture-screenshots.sh            # capture every screen, prompting between
 #   ./tools/capture-screenshots.sh dashboard  # capture a single named screen
 #
-# Files land in docs/screenshots/<name>.png, which is what the README links to.
+# Files land in screenshots/<name>.png at the repository root.
 
 set -euo pipefail
 
-OUT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)/docs/screenshots"
+OUT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)/screenshots"
 mkdir -p "$OUT_DIR"
 
 SCREENS=(
@@ -30,7 +30,7 @@ fi
 capture() {
     local name="$1"
     adb exec-out screencap -p > "$OUT_DIR/$name.png"
-    echo "  saved docs/screenshots/$name.png"
+    echo "  saved screenshots/$name.png"
 }
 
 if [ $# -gt 0 ]; then
@@ -48,4 +48,4 @@ done
 
 echo
 echo "Done. Commit them with:"
-echo "  git add docs/screenshots && git commit -m 'Add screenshots' && git push"
+echo "  git add screenshots && git commit -m 'Add screenshots' && git push"
