@@ -8,10 +8,9 @@ internal data class RadialMenuPosition(
 )
 
 internal object HomeScreenSpec {
-    const val accentColor = 0xFFC43A43.toInt()
     const val logoFractionPermille = 560
     const val captionSizeSp = 10f
-    const val circleRedStrokeDp = 2
+    const val circleAccentStrokeDp = 2
     const val circleDarkRimDp = 4
     const val centerClockSizeSp = 120f
     const val centerClockMinSizeSp = 60f

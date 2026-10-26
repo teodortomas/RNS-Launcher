@@ -24,6 +24,7 @@ class SettingsContractTest {
         assertEquals(
             setOf(
                 "rowLanguage",
+                "rowTheme",
                 "rowKeepOn",
                 "rowPhone",
                 "rowNav",
@@ -53,6 +54,23 @@ class SettingsContractTest {
         val styles = findProjectFile("app/src/main/res/values/themes.xml").readText()
         assertTrue(styles.contains("@color/vw_settings_accent"))
         assertTrue(styles.contains("@drawable/vw_settings_group"))
+    }
+
+    @Test
+    fun themeRowSwitchesBetweenTheBrandSkins() {
+        val settings = findProjectFile(
+            "app/src/main/java/com/dashline/launcher/SettingsActivity.kt"
+        ).readText()
+        assertTrue(
+            "rowTheme must open the theme dialog",
+            settings.contains("binding.rowTheme.setOnClickListener { showThemeDialog() }")
+        )
+        assertTrue("the pick must be persisted", settings.contains("prefs.brandTheme ="))
+        assertTrue(
+            "both brand skins must be offered",
+            settings.contains("BrandTheme.entries")
+        )
+        assertTrue(BrandTheme.entries.containsAll(listOf(BrandTheme.VOLKSWAGEN, BrandTheme.SKODA)))
     }
 
     @Test

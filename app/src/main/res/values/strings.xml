@@ -89,6 +89,8 @@
     <string name="unit_celsius">Celsius (°C)</string>
     <string name="unit_fahrenheit">Fahrenheit (°F)</string>
     <string name="settings_theme">Theme</string>
+    <string name="theme_volkswagen">Volkswagen (red)</string>
+    <string name="theme_skoda">Škoda (green)</string>
     <string name="settings_customize">Customize home screen</string>
     <string name="customize_hint">Drag the bar between the cards to resize them.</string>
     <string name="customize_hint_split">Media card: %1$d%% of the column. Drag the bar to resize.</string>

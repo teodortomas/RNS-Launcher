@@ -11,7 +11,6 @@ import android.graphics.drawable.VectorDrawable
 import android.os.Build
 import android.os.Bundle
 import android.view.View
-import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -132,7 +131,7 @@ abstract class BaseActivity : AppCompatActivity() {
     protected fun tintIcons(root: View?) {
         val target = root ?: return
         val accent = GradientThemes.accent(GradientThemes.current(this))
-        forEachView(target) { v ->
+        target.forEachDescendant { v ->
             if (v is ImageView && v.tag != TAG_NO_TINT && isVector(v.drawable)) {
                 v.setColorFilter(accent, PorterDuff.Mode.SRC_IN)
             }
@@ -156,15 +155,8 @@ abstract class BaseActivity : AppCompatActivity() {
      * up automatically without needing ids.
      */
     private fun retintAccent(root: View, from: Int, to: Int) {
-        forEachView(root) { v ->
+        root.forEachDescendant { v ->
             if (v is TextView && v.currentTextColor == from) v.setTextColor(to)
-        }
-    }
-
-    private fun forEachView(view: View, action: (View) -> Unit) {
-        action(view)
-        if (view is ViewGroup) {
-            for (i in 0 until view.childCount) forEachView(view.getChildAt(i), action)
         }
     }
 
