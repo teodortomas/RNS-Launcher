@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Dashline</string>
+    <string name="app_name">RNS Launcher</string>
 
     <string name="tab_audio">Audio</string>
     <string name="tab_phone">Téléphone</string>
@@ -169,7 +169,7 @@
     <string name="update_no_notes">Une version plus récente est disponible.</string>
     <string name="update_downloading">Téléchargement de la mise à jour…</string>
     <string name="update_allow_title">Autorisation ponctuelle</string>
-    <string name="update_allow_body">Android demande votre autorisation pour que Dashline installe une mise à jour. Activez &quot;Autoriser cette source&quot;, puis relancez la mise à jour.</string>
+    <string name="update_allow_body">Android demande votre autorisation pour que RNS Launcher installe une mise à jour. Activez &quot;Autoriser cette source&quot;, puis relancez la mise à jour.</string>
     <string name="update_allow_open">Ouvrir les réglages</string>
     <string name="update_failed_title">Mise à jour impossible</string>
     <string name="update_failed_body">Le téléchargement ou l\'installateur n\'a pas démarré. Vous pouvez récupérer l\'APK sur la page de la version.</string>

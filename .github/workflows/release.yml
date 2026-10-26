@@ -115,9 +115,9 @@ jobs:
         run: |
           mkdir -p dist
           cp app/build/outputs/apk/play/release/*.apk \
-             "dist/dashline-${RELEASE_TAG}.apk"
+             "dist/rns-launcher-${RELEASE_TAG}.apk"
           cp app/build/outputs/bundle/playRelease/*.aab \
-             "dist/dashline-${RELEASE_TAG}.aab"
+             "dist/rns-launcher-${RELEASE_TAG}.aab"
 
       # The .aab is uploaded to Play, not installed by users, so it stays a build
       # artifact rather than going on the public release page.
@@ -139,6 +139,6 @@ jobs:
           body: |
             Install on a head unit with:
 
-                adb install -r dashline-${{ steps.version.outputs.tag }}.apk
+                adb install -r rns-launcher-${{ steps.version.outputs.tag }}.apk
 
             Then press Home and choose this launcher.

@@ -26,16 +26,16 @@ val hasReleaseSigning = releaseStoreFile != null && releaseStorePassword != null
 
 // Release builds get their version from the git tag (see .github/workflows/release.yml);
 // local builds fall back to these defaults.
-val appVersionName = (project.findProperty("appVersionName") as String?) ?: "0.5.0"
-val appVersionCode = (project.findProperty("appVersionCode") as String?)?.toIntOrNull() ?: 500
+val appVersionName = (project.findProperty("appVersionName") as String?) ?: "0.6.0"
+val appVersionCode = (project.findProperty("appVersionCode") as String?)?.toIntOrNull() ?: 600
 
 android {
-    namespace = "com.dashline.launcher"
+    namespace = "eu.teodortomas.rnslauncher"
     // Google Play requires targeting API 35 now and API 36 from 31 Aug 2026.
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.dashline.launcher"
+        applicationId = "eu.teodortomas.rnslauncher"
         // Android 4.4 support is retired; all published builds require Android 5.0+.
         minSdk = 21
         targetSdk = 36
