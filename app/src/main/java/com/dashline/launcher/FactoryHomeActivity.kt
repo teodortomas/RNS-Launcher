@@ -59,6 +59,10 @@ class HomeActivity : AppCompatActivity() {
     private var lastGpsLocation: Location? = null
     private var launchAfterPick = false
 
+    /** Brand skin selected in Settings; the palette is baked into the views. */
+    private lateinit var brand: BrandTheme
+    private lateinit var palette: BrandPalette
+
     private val handler = Handler(Looper.getMainLooper())
     private val clockTicker = object : Runnable {
         override fun run() {
@@ -92,6 +96,8 @@ class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         prefs = Prefs(this)
+        brand = BrandTheme.current(this)
+        palette = brand.palette
         setContentView(createHomeScreen())
         hideSystemBars()
         updateClock()
@@ -99,6 +105,12 @@ class HomeActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+        // Settings can switch the brand while this activity is paused, and every
+        // accent is baked into the views at creation, so rebuild them.
+        if (BrandTheme.current(this) != brand) {
+            recreate()
+            return
+        }
         hideSystemBars()
         applyKeepScreenOn()
         updateClock()
@@ -171,7 +183,7 @@ class HomeActivity : AppCompatActivity() {
 
         val settingsGear = ImageView(this).apply {
             setImageResource(R.drawable.ic_settings)
-            setColorFilter(COLOR_ACCENT)
+            setColorFilter(palette.accent)
             scaleType = ImageView.ScaleType.CENTER_INSIDE
             setPadding(dp(10), dp(10), dp(10), dp(10))
             background = settingsGearBackground()
@@ -271,7 +283,7 @@ class HomeActivity : AppCompatActivity() {
         speedValueView = text(
             GpsSpeedFormatter.NO_FIX_VALUE,
             HomeScreenSpec.centerSpeedSizeSp,
-            COLOR_ACCENT,
+            palette.accent,
             bold = true
         ).apply {
             gravity = Gravity.CENTER
@@ -287,7 +299,7 @@ class HomeActivity : AppCompatActivity() {
                 TypedValue.COMPLEX_UNIT_SP
             )
         }
-        speedUnitView = text(GpsSpeedFormatter.UNIT, HomeScreenSpec.centerSpeedUnitSizeSp, COLOR_ACCENT, bold = true).apply {
+        speedUnitView = text(GpsSpeedFormatter.UNIT, HomeScreenSpec.centerSpeedUnitSizeSp, palette.accent, bold = true).apply {
             gravity = Gravity.CENTER
             includeFontPadding = false
             maxLines = 1
@@ -436,8 +448,8 @@ class HomeActivity : AppCompatActivity() {
         }
 
     private fun settingsGearBackground(): StateListDrawable = StateListDrawable().apply {
-        addState(intArrayOf(android.R.attr.state_pressed), gearStateBackground(0x35C43A43))
-        addState(intArrayOf(android.R.attr.state_focused), gearStateBackground(0x35C43A43))
+        addState(intArrayOf(android.R.attr.state_pressed), gearStateBackground(palette.accentSoft))
+        addState(intArrayOf(android.R.attr.state_focused), gearStateBackground(palette.accentSoft))
         addState(intArrayOf(), gearStateBackground(0x00000000))
     }
 
@@ -459,13 +471,16 @@ class HomeActivity : AppCompatActivity() {
         }
         val face = GradientDrawable(
             GradientDrawable.Orientation.TOP_BOTTOM,
-            if (pressed) intArrayOf(COLOR_CIRCLE_PRESSED_TOP, COLOR_CIRCLE_PRESSED_BOTTOM)
+            if (pressed) intArrayOf(palette.circlePressedTop, palette.circlePressedBottom)
             else intArrayOf(COLOR_CIRCLE_TOP, COLOR_CIRCLE_BOTTOM)
         ).apply {
             shape = GradientDrawable.OVAL
             setStroke(
-                dp(if (pressed) HomeScreenSpec.circleRedStrokeDp + 1 else HomeScreenSpec.circleRedStrokeDp),
-                if (pressed) COLOR_CIRCLE_PRESSED_BORDER else COLOR_ACCENT
+                dp(
+                    if (pressed) HomeScreenSpec.circleAccentStrokeDp + 1
+                    else HomeScreenSpec.circleAccentStrokeDp
+                ),
+                if (pressed) palette.circlePressedBorder else palette.accent
             )
         }
         return LayerDrawable(arrayOf(outer, InsetDrawable(face, dp(HomeScreenSpec.circleDarkRimDp))))
@@ -593,7 +608,7 @@ class HomeActivity : AppCompatActivity() {
             ringPaint.color = COLOR_RING_SHADOW
             ringPaint.strokeWidth = dp(3f)
             canvas.drawOval(ringBounds, ringPaint)
-            ringPaint.color = COLOR_ACCENT
+            ringPaint.color = palette.accent
             ringPaint.strokeWidth = dp(1.2f)
             canvas.drawOval(ringBounds, ringPaint)
         }
@@ -615,14 +630,10 @@ class HomeActivity : AppCompatActivity() {
         private const val COLOR_STAGE_BOTTOM = 0xFF0B0C0D.toInt()
         private const val COLOR_PRIMARY_TEXT = 0xFFECEEEF.toInt()
         private const val COLOR_MUTED = 0xFF9CA1A4.toInt()
-        private const val COLOR_ACCENT = HomeScreenSpec.accentColor
         private const val COLOR_ICON = 0xFF424649.toInt()
         private const val COLOR_CIRCLE_EDGE = 0xFF555A5D.toInt()
         private const val COLOR_CIRCLE_TOP = 0xFFE0E2E3.toInt()
         private const val COLOR_CIRCLE_BOTTOM = 0xFFB5B8BA.toInt()
-        private const val COLOR_CIRCLE_PRESSED_TOP = 0xFFD4B7BA.toInt()
-        private const val COLOR_CIRCLE_PRESSED_BOTTOM = 0xFF9C5B61.toInt()
-        private const val COLOR_CIRCLE_PRESSED_BORDER = 0xFFE56C73.toInt()
         private const val COLOR_RING_SHADOW = 0x705A5D60
     }
 }

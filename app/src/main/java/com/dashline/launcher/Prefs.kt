@@ -77,6 +77,14 @@ class Prefs(context: Context) {
         get() = sp.getString(KEY_THEME, THEME_DARK) ?: THEME_DARK
         set(v) = sp.edit().putString(KEY_THEME, v).apply()
 
+    /**
+     * Brand skin of the circular dashboard: BRAND_VW (default, the original red)
+     * or BRAND_SKODA (Škoda green). Only accents change — see [BrandTheme].
+     */
+    var brandTheme: String
+        get() = sp.getString(KEY_BRAND, BRAND_VW) ?: BRAND_VW
+        set(v) = sp.edit().putString(KEY_BRAND, v).apply()
+
     // ---- home screen panels -------------------------------------------------
 
     /** PANEL_MEDIA_FIRST (default) or PANEL_PHONE_FIRST — which card sits on top. */
@@ -431,6 +439,12 @@ class Prefs(context: Context) {
         const val THEME_LIGHT = "light"
         const val THEME_DARK = "dark"
         const val THEME_SYSTEM = "system"
+
+        private const val KEY_BRAND = "brand_theme"
+
+        /** Persisted keys of [BrandTheme]; changing them would reset the skin. */
+        const val BRAND_VW = "vw"
+        const val BRAND_SKODA = "skoda"
 
         const val ROLE_PHONE = "phone"
         const val ROLE_NAV = "nav"

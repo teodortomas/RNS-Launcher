@@ -16,6 +16,7 @@ class SettingsActivity : BaseActivity() {
 
     private lateinit var binding: ActivitySettingsBinding
     private lateinit var prefs: Prefs
+    private lateinit var palette: BrandPalette
 
     private companion object {
         const val REQ_DEFAULT_LAUNCHER = 10
@@ -27,15 +28,22 @@ class SettingsActivity : BaseActivity() {
         binding = ActivitySettingsBinding.inflate(layoutInflater)
         setContentView(binding.root)
         prefs = Prefs(this)
+        palette = BrandTheme.current(this).palette
 
         binding.header.root.setBackgroundColor(ContextCompat.getColor(this, R.color.vw_settings_surface))
         binding.header.pageTitle.setText(R.string.settings_title)
         binding.header.pageTitle.setTextColor(ContextCompat.getColor(this, R.color.vw_settings_primary))
-        binding.header.navBack.setColorFilter(ContextCompat.getColor(this, R.color.vw_settings_accent))
-        binding.header.navHome.setColorFilter(ContextCompat.getColor(this, R.color.vw_settings_accent))
+        binding.header.navBack.setColorFilter(palette.accent)
+        binding.header.navHome.setColorFilter(palette.accent)
         bindPageNav(binding.header.navBack, binding.header.navHome)
 
+        // The layout spells the accent out as Volkswagen red; repaint it for the
+        // brand that is actually selected.
+        BrandChrome.tintAccent(binding.root, palette)
+        BrandChrome.tintRows(binding.root, palette)
+
         binding.rowLanguage.setOnClickListener { showLanguageDialog() }
+        binding.rowTheme.setOnClickListener { showThemeDialog() }
         binding.rowPhone.setOnClickListener {
             AppPickerActivity.start(this, Prefs.ROLE_PHONE, 1)
         }
@@ -95,8 +103,31 @@ class SettingsActivity : BaseActivity() {
             .show()
     }
 
+    private fun showThemeDialog() {
+        val themes = BrandTheme.entries
+        AlertDialog.Builder(this)
+            .setTitle(R.string.settings_theme)
+            .setSingleChoiceItems(
+                themes.map { getString(brandLabel(it)) }.toTypedArray(),
+                themes.indexOf(BrandTheme.current(this))
+            ) { dialog, which ->
+                prefs.brandTheme = themes[which].key
+                dialog.dismiss()
+                // Accents are read once while the screen inflates, so rebuild it.
+                recreate()
+            }
+            .show()
+    }
+
+    /** Localised name of a brand skin, e.g. "Škoda (green)". */
+    private fun brandLabel(theme: BrandTheme): Int = when (theme) {
+        BrandTheme.VOLKSWAGEN -> R.string.theme_volkswagen
+        BrandTheme.SKODA -> R.string.theme_skoda
+    }
+
     private fun refresh() {
         binding.languageValue.text = LocaleManager.displayName(this, prefs.language)
+        binding.themeValue.text = getString(brandLabel(BrandTheme.current(this)))
         binding.phoneValue.text = label(prefs.phoneApp)
         binding.navValue.text = label(prefs.navApp)
         binding.radioValue.text = label(prefs.radioApp)

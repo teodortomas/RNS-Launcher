@@ -46,6 +46,8 @@
     <string name="unit_celsius">Цельсий (°C)</string>
     <string name="unit_fahrenheit">Фаренгейт (°F)</string>
     <string name="settings_theme">Тема</string>
+    <string name="theme_volkswagen">Volkswagen (красный)</string>
+    <string name="theme_skoda">Škoda (зелёный)</string>
     <string name="theme_auto">Авто (по времени суток)</string>
     <string name="theme_light">Светлая</string>
     <string name="theme_dark">Тёмная</string>

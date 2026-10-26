@@ -52,6 +52,8 @@
     <string name="unit_celsius">Santigrat (°C)</string>
     <string name="unit_fahrenheit">Fahrenhayt (°F)</string>
     <string name="settings_theme">Tema</string>
+    <string name="theme_volkswagen">Volkswagen (kırmızı)</string>
+    <string name="theme_skoda">Škoda (yeşil)</string>
     <string name="theme_auto">Otomatik (saate göre)</string>
     <string name="theme_light">Açık</string>
     <string name="theme_dark">Koyu</string>
