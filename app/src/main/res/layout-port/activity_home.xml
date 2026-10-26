@@ -83,7 +83,7 @@
                     android:gravity="center">
 
                         <!-- Analog face — shown instead of bigClock when that style is picked -->
-                    <com.dashline.launcher.AnalogClockView
+                    <eu.teodortomas.rnslauncher.AnalogClockView
                         android:id="@+id/analogClock"
                         android:layout_width="@dimen/analog_clock"
                         android:layout_height="@dimen/analog_clock"
@@ -592,7 +592,7 @@
                 </LinearLayout>
 
                 <!-- One page of app tiles, built in code; swipe to change page -->
-                <com.dashline.launcher.SwipeLinearLayout
+                <eu.teodortomas.rnslauncher.SwipeLinearLayout
                     android:id="@+id/portraitDrawerGrid"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
