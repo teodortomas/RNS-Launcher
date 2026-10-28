@@ -26,8 +26,8 @@ val hasReleaseSigning = releaseStoreFile != null && releaseStorePassword != null
 
 // Release builds get their version from the git tag (see .github/workflows/release.yml);
 // local builds fall back to these defaults.
-val appVersionName = (project.findProperty("appVersionName") as String?) ?: "0.7.1"
-val appVersionCode = (project.findProperty("appVersionCode") as String?)?.toIntOrNull() ?: 701
+val appVersionName = (project.findProperty("appVersionName") as String?) ?: "0.8.0"
+val appVersionCode = (project.findProperty("appVersionCode") as String?)?.toIntOrNull() ?: 800
 
 android {
     namespace = "eu.teodortomas.rnslauncher"
