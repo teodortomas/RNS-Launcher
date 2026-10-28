@@ -1,9 +1,9 @@
 # RNS-Launcher
 
-A personal Android launcher for my VW Golf VI head unit, kept here on GitHub for my
+A personal Android launcher for my aftermarket VW Golf VI head unit, kept here on GitHub for my
 own use. Kotlin, classic Views, no Google Play Services.
 
-The dashboard follows the factory VW unit, in two brand skins: Volkswagen red
+The dashboard follows the factory VAG unit RNS, in two brand skins: Volkswagen red
 (default) and Škoda green — switchable under **Settings → Theme**.
 
 Each of the six home keys can be renamed and given any icon from a built-in set
