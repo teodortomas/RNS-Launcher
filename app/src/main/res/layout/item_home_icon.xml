@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  One icon in the key editor's grid. The cell is a square that hugs the key face,
-  so the selection frame around an icon stays centred on it instead of stretching
-  across the whole grid column. Face, glyph size and frame all come from
-  dimens.xml and IconAdapter, the same numbers the dashboard keys use.
+  One icon in the key editor's grid: the drawing on a miniature key face, with the
+  name of the drawing under it. The cell is a square that hugs the face, so the
+  selection frame around an icon stays centred on it instead of stretching across
+  the whole grid column. Face, glyph size and frame come from dimens.xml and
+  IconAdapter, the same numbers the dashboard keys use.
 -->
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingTop="5dp"
-    android:paddingBottom="5dp"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:paddingTop="4dp"
+    android:paddingBottom="4dp"
     android:clickable="true"
     android:focusable="true">
 
@@ -17,7 +20,6 @@
         android:id="@+id/cellFrame"
         android:layout_width="@dimen/home_key_cell"
         android:layout_height="@dimen/home_key_cell"
-        android:layout_gravity="center"
         android:padding="6dp">
 
         <FrameLayout
@@ -35,4 +37,15 @@
                 android:tag="noTint" />
         </FrameLayout>
     </FrameLayout>
-</FrameLayout>
+
+    <TextView
+        android:id="@+id/iconLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:maxLines="1"
+        android:textColor="@color/vw_settings_secondary"
+        android:textSize="10sp" />
+</LinearLayout>

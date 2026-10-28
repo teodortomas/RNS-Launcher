@@ -37,6 +37,13 @@ class HomeIconsTest {
     }
 
     @Test
+    fun everyIconIsNamedAndNoNameIsUsedTwice() {
+        val labels = HomeIcons.all.map { it.labelRes }
+        assertEquals("two icons share a name", labels.size, labels.toSet().size)
+        assertTrue("every icon needs a name", labels.none { it == 0 })
+    }
+
+    @Test
     fun pickerOffersEveryCatalogueIconExceptTheProjectionMark() {
         assertEquals(39, HomeIcons.pickable.size)
         assertTrue(HomeIcons.pickable.none { it.key == HomeIcons.KEY_APP_CONNECT })
