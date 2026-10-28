@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  One icon in the key editor's grid. The glyph sits on a miniature of the home
+  key face, so a choice can be judged the way it will look on the dashboard; the
+  face and the selection frame are built in IconAdapter, because both take the
+  brand accent.
+-->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="6dp"
+    android:clickable="true"
+    android:focusable="true">
+
+    <FrameLayout
+        android:id="@+id/keyFace"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_gravity="center">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iconImage"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_gravity="center"
+            android:scaleType="fitCenter"
+            android:tag="noTint" />
+    </FrameLayout>
+</FrameLayout>

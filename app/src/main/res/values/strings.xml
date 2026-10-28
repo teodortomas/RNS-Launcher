@@ -74,6 +74,13 @@
     <string name="section_apps">DEFAULT APPS</string>
     <string name="section_access">PERMISSIONS</string>
     <string name="section_drawer">APP DRAWER</string>
+    <string name="section_home">HOME SCREEN</string>
+    <string name="settings_home_keys">Keys and labels</string>
+    <string name="settings_home_keys_value">%1$d of %2$d customised</string>
+    <string name="home_key_label">LABEL</string>
+    <string name="home_key_icon">ICON</string>
+    <string name="home_key_reset">Reset to default</string>
+    <string name="home_key_icon_option">Icon %1$d</string>
     <string name="settings_language">Language</string>
     <string name="language_system">System default</string>
     <string name="settings_phone_app">Phone app</string>

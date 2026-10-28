@@ -4,12 +4,6 @@
     <string name="home_brand">GOLF VI</string>
     <string name="home_subtitle">INFOTAINMENT</string>
     <string name="home_menu">HLAVNÍ MENU</string>
-    <string name="home_radio">RÁDIO</string>
-    <string name="home_media">MÉDIA</string>
-    <string name="home_phone">TELEFON</string>
-    <string name="home_navigation">NAVIGACE</string>
-    <string name="home_app_connect">APP-CONNECT</string>
-    <string name="home_apps">APLIKACE</string>
     <string name="home_gps_label">GPS</string>
     <string name="home_settings">Nastavení</string>
     <string name="home_footer">OSOBNÍ INFOTAINMENT</string>
@@ -74,6 +68,13 @@
     <string name="section_apps">VÝCHOZÍ APLIKACE</string>
     <string name="section_access">OPRÁVNĚNÍ</string>
     <string name="section_drawer">SEZNAM APLIKACÍ</string>
+    <string name="section_home">DOMOVSKÁ OBRAZOVKA</string>
+    <string name="settings_home_keys">Klávesy a popisky</string>
+    <string name="settings_home_keys_value">%1$d z %2$d upraveno</string>
+    <string name="home_key_label">POPISEK</string>
+    <string name="home_key_icon">IKONA</string>
+    <string name="home_key_reset">Vrátit výchozí</string>
+    <string name="home_key_icon_option">Ikona %1$d</string>
     <string name="settings_language">Jazyk</string>
     <string name="language_system">Podle systému</string>
     <string name="settings_phone_app">Telefonní aplikace</string>

@@ -62,6 +62,19 @@
             android:configChanges="keyboard|keyboardHidden|navigation"
             android:parentActivityName=".HomeActivity" />
 
+        <activity
+            android:name=".HomeKeysActivity"
+            android:exported="false"
+            android:configChanges="keyboard|keyboardHidden|navigation"
+            android:parentActivityName=".SettingsActivity" />
+
+        <!-- The caption field needs the keyboard, so this page resizes rather than pans. -->
+        <activity
+            android:name=".HomeKeyActivity"
+            android:exported="false"
+            android:configChanges="keyboard|keyboardHidden|navigation"
+            android:windowSoftInputMode="adjustResize|stateHidden"
+            android:parentActivityName=".HomeKeysActivity" />
 
     </application>
 </manifest>

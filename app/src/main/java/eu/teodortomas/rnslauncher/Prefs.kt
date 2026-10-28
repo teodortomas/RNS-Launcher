@@ -78,6 +78,48 @@ class Prefs(context: Context) {
         get() = sp.getBoolean(KEY_KEEP_ON, true)
         set(v) = sp.edit().putBoolean(KEY_KEEP_ON, v).apply()
 
+    // ---- home keys: per-key caption and icon -------------------------------
+
+    /**
+     * Caption chosen for a key, or null when the key still shows its built-in
+     * name. Blank text is stored as "no choice" so an emptied field falls back
+     * instead of leaving a key silently unlabelled.
+     */
+    fun keyLabel(tileId: String): String? =
+        sp.getString(keyLabelPref(tileId), null)?.takeIf { it.isNotBlank() }
+
+    fun setKeyLabel(tileId: String, label: String?) {
+        val editor = sp.edit()
+        if (label.isNullOrBlank()) editor.remove(keyLabelPref(tileId))
+        else editor.putString(keyLabelPref(tileId), label.trim())
+        editor.apply()
+    }
+
+    /** [HomeIcons] key of the icon chosen for a key, or null for the built-in one. */
+    fun keyIcon(tileId: String): String? =
+        sp.getString(keyIconPref(tileId), null)?.takeIf { it.isNotBlank() }
+
+    fun setKeyIcon(tileId: String, iconKey: String?) {
+        val editor = sp.edit()
+        if (iconKey.isNullOrBlank()) editor.remove(keyIconPref(tileId))
+        else editor.putString(keyIconPref(tileId), iconKey)
+        editor.apply()
+    }
+
+    /** Drops both customisations of one key. */
+    fun clearKey(tileId: String) {
+        sp.edit().remove(keyLabelPref(tileId)).remove(keyIconPref(tileId)).apply()
+    }
+
+    /**
+     * Snapshot of every key's caption and icon. HomeActivity stays alive while the
+     * user edits them on another screen, so comparing this on resume tells it
+     * whether the keys it already built are still current.
+     */
+    fun homeKeysSignature(): String = HomeMenuTile.entries.joinToString("|") { tile ->
+        "${tile.id}=${keyLabel(tile.id)}~${keyIcon(tile.id)}"
+    }
+
     // ---- hidden apps (from the drawer) -------------------------------------
 
     /** Defensive copy — the Set returned by SharedPreferences must not be mutated. */
@@ -122,6 +164,11 @@ class Prefs(context: Context) {
         private const val KEY_CARPLAY = "carplay_app"
         private const val KEY_KEEP_ON = "keep_screen_on"
         private const val KEY_HIDDEN = "hidden_apps"
+        private const val KEY_KEY_LABEL = "key_label_"
+        private const val KEY_KEY_ICON = "key_icon_"
+
+        private fun keyLabelPref(tileId: String) = KEY_KEY_LABEL + tileId
+        private fun keyIconPref(tileId: String) = KEY_KEY_ICON + tileId
         private const val KEY_LANGUAGE = "language"
         private const val KEY_ASKED_LOCATION = "asked_location"
         private const val KEY_GRADIENT = "gradient"

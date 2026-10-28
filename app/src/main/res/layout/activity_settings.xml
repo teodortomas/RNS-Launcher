@@ -51,6 +51,15 @@
                 </LinearLayout>
             </LinearLayout>
 
+            <TextView style="@style/SettingsSection" android:text="@string/section_home" />
+
+            <LinearLayout style="@style/SettingsGroup">
+                <LinearLayout android:id="@+id/rowHomeKeys" style="@style/SettingsRow">
+                    <TextView style="@style/SettingsRowTitle" android:text="@string/settings_home_keys" />
+                    <TextView android:id="@+id/homeKeysValue" style="@style/SettingsRowValue" />
+                </LinearLayout>
+            </LinearLayout>
+
             <TextView style="@style/SettingsSection" android:text="@string/section_apps" />
 
             <LinearLayout style="@style/SettingsGroup">
