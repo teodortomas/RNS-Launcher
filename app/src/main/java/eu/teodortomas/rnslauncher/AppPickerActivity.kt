@@ -57,14 +57,16 @@ class AppPickerActivity : BaseActivity() {
         binding.pickerGrid.setHasFixedSize(true)
     }
 
-    private fun titleForRole(role: String): String = when (role) {
-        Prefs.ROLE_PHONE -> getString(R.string.settings_phone_app)
-        Prefs.ROLE_NAV -> getString(R.string.settings_nav_app)
-        Prefs.ROLE_RADIO -> getString(R.string.settings_radio_app)
-        Prefs.ROLE_MEDIA -> getString(R.string.settings_media_app)
-        Prefs.ROLE_ANDROID_AUTO -> getString(R.string.settings_android_auto_app)
-        Prefs.ROLE_CARPLAY -> getString(R.string.settings_carplay_app)
-        else -> getString(R.string.pick_an_app)
+    /** The key as the home screen names it; a renamed key should not appear under
+     *  its old role name here. */
+    private fun titleForRole(role: String): String {
+        HomeMenuTile.entries.firstOrNull { it.appRole == role }?.let { tile ->
+            return KeyLabels.caption(this, Prefs(this), tile)
+        }
+        return when (role) {
+            Prefs.ROLE_CARPLAY -> getString(R.string.settings_carplay_app)
+            else -> getString(R.string.pick_an_app)
+        }
     }
 
     companion object {

@@ -129,6 +129,13 @@ class SettingsActivity : BaseActivity() {
     }
 
     private fun refresh() {
+        // The rows name the key as it is written on the home screen, so a renamed
+        // key is still recognisable here.
+        binding.phoneTitle.text = KeyLabels.caption(this, prefs, HomeMenuTile.PHONE)
+        binding.navTitle.text = KeyLabels.caption(this, prefs, HomeMenuTile.NAVIGATION)
+        binding.radioTitle.text = KeyLabels.caption(this, prefs, HomeMenuTile.RADIO)
+        binding.mediaTitle.text = KeyLabels.caption(this, prefs, HomeMenuTile.MEDIA)
+        binding.androidAutoTitle.text = KeyLabels.caption(this, prefs, HomeMenuTile.APP_CONNECT)
         binding.homeKeysValue.text = getString(
             R.string.settings_home_keys_value,
             HomeMenuTile.entries.count { prefs.keyLabel(it.id) != null || prefs.keyIcon(it.id) != null },
