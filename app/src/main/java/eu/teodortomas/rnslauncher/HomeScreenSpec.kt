@@ -30,12 +30,17 @@ internal object HomeScreenSpec {
     fun logoInsetForButton(buttonSizePx: Int): Int =
         (buttonSizePx - logoSizeForButton(buttonSizePx)) / 2
 
+    /**
+     * Six keys around the ring: three evenly spaced rows mirrored about 490 permille —
+     * a touch above the ring centre, since the caption strip adds weight below the
+     * bottom pair. Every x follows the ring ellipse, so each key sits on the arc.
+     */
     val buttons = listOf(
-        RadialMenuPosition(HomeMenuTile.RADIO, 273, 120),
-        RadialMenuPosition(HomeMenuTile.MEDIA, 727, 120),
-        RadialMenuPosition(HomeMenuTile.PHONE, 123, 360),
-        RadialMenuPosition(HomeMenuTile.NAVIGATION, 877, 360),
-        RadialMenuPosition(HomeMenuTile.APP_CONNECT, 143, 700),
-        RadialMenuPosition(HomeMenuTile.APPS, 857, 700)
+        RadialMenuPosition(HomeMenuTile.RADIO, 175, 235),
+        RadialMenuPosition(HomeMenuTile.MEDIA, 825, 235),
+        RadialMenuPosition(HomeMenuTile.PHONE, 105, 490),
+        RadialMenuPosition(HomeMenuTile.NAVIGATION, 895, 490),
+        RadialMenuPosition(HomeMenuTile.APP_CONNECT, 164, 745),
+        RadialMenuPosition(HomeMenuTile.APPS, 836, 745)
     )
 }

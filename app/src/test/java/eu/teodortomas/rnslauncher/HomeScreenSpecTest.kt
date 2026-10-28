@@ -7,12 +7,15 @@ import org.junit.Test
 
 class HomeScreenSpecTest {
     @Test
-    fun circularMenuPlacesAllSixActionsInThreeMirroredPairs() {
+    fun circularMenuPlacesAllSixActionsInThreeEvenlySpacedMirroredPairs() {
         val buttons = HomeScreenSpec.buttons
 
         assertEquals(HomeMenuTile.entries.size, buttons.size)
         assertEquals(HomeMenuTile.entries.toSet(), buttons.map { it.tile }.toSet())
-        assertEquals(listOf(120, 360, 700), buttons.map { it.yPermille }.distinct().sorted())
+        val rows = buttons.map { it.yPermille }.distinct().sorted()
+        assertEquals(3, rows.size)
+        assertEquals(rows[1] - rows[0], rows[2] - rows[1])
+        assertTrue("rows are not centred on the display: $rows", rows[0] + rows[2] in 960..1_000)
         assertTrue(buttons.groupBy { it.yPermille }.values.all { pair ->
             pair.size == 2 && pair.sumOf { it.xPermille } == 1_000
         })
@@ -20,8 +23,10 @@ class HomeScreenSpecTest {
 
     @Test
     fun circularMenuCentersStayInsideTheDisplayWithRoomForGreyButtons() {
+        // The middle pair sits on the widest point of the ring, so it is allowed closer
+        // to the edges than the other four.
         assertTrue(HomeScreenSpec.buttons.all { position ->
-            position.xPermille in 120..880 && position.yPermille in 80..820
+            position.xPermille in 100..900 && position.yPermille in 80..820
         })
     }
 
