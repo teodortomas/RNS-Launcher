@@ -54,9 +54,11 @@ internal class IconAdapter(
         if (icon.tinted) holder.binding.iconImage.setColorFilter(BrandChrome.KEY_GLYPH)
         else holder.binding.iconImage.clearColorFilter()
 
+        holder.binding.iconLabel.text = context.getString(icon.labelRes)
         holder.binding.root.isSelected = selected
-        holder.binding.root.contentDescription =
-            context.getString(R.string.home_key_icon_option, position + 1)
+        // The name of the drawing is what a screen reader should say here, not the
+        // caption of the key being edited.
+        holder.binding.root.contentDescription = context.getString(icon.labelRes)
         holder.binding.root.setOnClickListener {
             onPick(icon)
             select(icon.key)

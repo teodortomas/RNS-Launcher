@@ -96,6 +96,23 @@ class SettingsContractTest {
         }
     }
 
+    /**
+     * A key can be renamed on the dashboard. The settings row that picks its app and
+     * the picker's own header must say the same name, or the user is configuring a
+     * button that no longer exists under that label.
+     */
+    @Test
+    fun appRowsAndThePickerNameTheKeyAsTheHomeScreenDoes() {
+        val settings = findProjectFile(
+            "app/src/main/java/eu/teodortomas/rnslauncher/SettingsActivity.kt"
+        ).readText()
+        val picker = findProjectFile(
+            "app/src/main/java/eu/teodortomas/rnslauncher/AppPickerActivity.kt"
+        ).readText()
+        assertTrue("settings rows must use the key caption", settings.contains("KeyLabels.caption"))
+        assertTrue("the picker header must use the key caption", picker.contains("KeyLabels.caption"))
+    }
+
     @Test
     fun appPickerUsesTheSameFixedVwPaletteAsSettings() {
         val activity = findProjectFile(
