@@ -10,6 +10,12 @@ Each of the six home keys can be renamed and given any icon from a built-in set
 under **Settings → Keys and labels**. The captions are the user's own, so only an
 English default ships and they are not translated.
 
+## Screens
+
+| Volkswagen red (default) | Škoda green |
+| --- | --- |
+| ![Home screen in the Volkswagen red skin](docs/home-vw.png) | ![Home screen in the Škoda green skin](docs/home-skoda.png) |
+
 ## Credits
 
 A fork of [Dashline](https://github.com/metehankaygsz/dashline) by Metehan Kaygısız,
