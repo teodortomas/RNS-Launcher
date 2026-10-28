@@ -69,10 +69,13 @@ internal object HomeIcons {
         HomeIcon("speed", R.drawable.ic_key_speed, tinted = true),
         HomeIcon("browser", R.drawable.ic_key_browser, tinted = true),
         HomeIcon("download", R.drawable.ic_key_download, tinted = true),
-        HomeIcon("store", R.drawable.ic_key_store, tinted = true)
+        HomeIcon("store", R.drawable.ic_key_store, tinted = true),
+        HomeIcon("shop", R.drawable.ic_key_shop, tinted = true),
+        HomeIcon("shopping-bag", R.drawable.ic_key_shopping_bag, tinted = true),
+        HomeIcon("get-app", R.drawable.ic_key_get_app, tinted = true)
     )
 
-    /** What the picker offers: 36 icons, which fills nine columns by four rows. */
+    /** What the picker offers: 39 icons, nine columns by five rows, so it scrolls. */
     val pickable: List<HomeIcon> = all.filterNot { it.key == KEY_APP_CONNECT }
 
     fun find(key: String?): HomeIcon? =

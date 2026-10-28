@@ -37,9 +37,42 @@ class HomeIconsTest {
     }
 
     @Test
-    fun pickerOffersNineColumnsByFourRows() {
-        assertEquals(36, HomeIcons.pickable.size)
+    fun pickerOffersEveryCatalogueIconExceptTheProjectionMark() {
+        assertEquals(39, HomeIcons.pickable.size)
         assertTrue(HomeIcons.pickable.none { it.key == HomeIcons.KEY_APP_CONNECT })
+    }
+
+    /**
+     * Material ships some glyphs under two names: `get_app` and `file_download` are
+     * the same drawing, so adding both would offer one icon twice. Compare the path
+     * data of every key drawable, not just its name.
+     */
+    @Test
+    fun noTwoKeyDrawablesDrawTheSameGlyph() {
+        val drawables = findResourceDirectory().resolve("drawable")
+            .listFiles { file -> file.name.startsWith("ic_key_") && file.name.endsWith(".xml") }
+            ?: error("no ic_key_* drawables found")
+        val byGlyph = drawables.groupBy { file ->
+            Regex("android:pathData=\"([^\"]*)\"")
+                .findAll(file.readText())
+                .joinToString("|") { it.groupValues[1] }
+        }
+        val duplicates = byGlyph.filterValues { it.size > 1 }
+            .values.map { files -> files.map { it.name } }
+        assertTrue("identical glyphs under different names: $duplicates", duplicates.isEmpty())
+    }
+
+    private fun findResourceDirectory(): java.io.File {
+        var directory: java.io.File? =
+            java.io.File(System.getProperty("user.dir") ?: ".").canonicalFile
+        while (directory != null) {
+            val moduleResources = java.io.File(directory, "src/main/res")
+            if (java.io.File(moduleResources, "values/strings.xml").isFile) return moduleResources
+            val appResources = java.io.File(directory, "app/src/main/res")
+            if (java.io.File(appResources, "values/strings.xml").isFile) return appResources
+            directory = directory.parentFile
+        }
+        error("Could not locate app/src/main/res from the test working directory")
     }
 
     @Test
