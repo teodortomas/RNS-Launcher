@@ -46,7 +46,9 @@ internal class IconAdapter(
         val selected = icon.key == selectedKey
 
         holder.binding.keyFace.background = BrandChrome.keyFace(context, palette)
-        holder.binding.root.background =
+        // Frame the square around the key, not the whole column: a cell-wide frame
+        // reads as a bar and collides with the page edge in the last column.
+        holder.binding.cellFrame.background =
             if (selected) BrandChrome.selectedFrame(context, palette) else null
         holder.binding.iconImage.setImageResource(icon.res)
         if (icon.tinted) holder.binding.iconImage.setColorFilter(BrandChrome.KEY_GLYPH)

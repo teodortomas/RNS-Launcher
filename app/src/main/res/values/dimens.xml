@@ -29,4 +29,13 @@
     <dimen name="chrono_text">26sp</dimen>
     <dimen name="chrono_button">44dp</dimen>
     <dimen name="chrono_width">112dp</dimen>
+
+    <!-- Home keys. The glyph is 56% of the face, as on the dashboard
+         (HomeScreenSpec.logoFractionPermille), so a key looks the same in the
+         list, in the icon grid and on the ring. -->
+    <dimen name="home_key_row_face">44dp</dimen>
+    <dimen name="home_key_row_glyph">22dp</dimen>
+    <dimen name="home_key_face">64dp</dimen>
+    <dimen name="home_key_glyph">34dp</dimen>
+    <dimen name="home_key_cell">76dp</dimen>
 </resources>

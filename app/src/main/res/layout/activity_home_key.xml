@@ -34,6 +34,7 @@
             android:layout_width="match_parent"
             android:layout_height="52dp"
             android:background="@drawable/vw_settings_input"
+            android:gravity="center_vertical|start"
             android:imeOptions="actionDone"
             android:importantForAutofill="no"
             android:inputType="textCapCharacters"
@@ -49,16 +50,18 @@
             android:text="@string/home_key_icon" />
     </LinearLayout>
 
+    <!-- Same 16dp side padding as the caption field above, so the grid edges line
+         up with it instead of running wider than the rest of the page. -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/iconGrid"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:clipToPadding="false"
-        android:paddingStart="10dp"
-        android:paddingTop="4dp"
-        android:paddingEnd="10dp"
-        android:paddingBottom="4dp" />
+        android:paddingStart="16dp"
+        android:paddingTop="6dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="6dp" />
 
     <View
         android:layout_width="match_parent"

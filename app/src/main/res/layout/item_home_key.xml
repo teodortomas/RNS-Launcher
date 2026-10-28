@@ -6,14 +6,14 @@
 
     <FrameLayout
         android:id="@+id/keyFace"
-        android:layout_width="44dp"
-        android:layout_height="44dp">
+        android:layout_width="@dimen/home_key_row_face"
+        android:layout_height="@dimen/home_key_row_face">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/keyIcon"
-            android:layout_width="44dp"
-            android:layout_height="44dp"
-            android:padding="9dp"
+            android:layout_width="@dimen/home_key_row_glyph"
+            android:layout_height="@dimen/home_key_row_glyph"
+            android:layout_gravity="center"
             android:scaleType="fitCenter"
             android:tag="noTint" />
     </FrameLayout>
