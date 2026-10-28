@@ -14,7 +14,7 @@ English default ships and they are not translated.
 
 | Volkswagen red (default) | Škoda green |
 | --- | --- |
-| ![Home screen in the Volkswagen red skin](docs/home-vw.png) | ![Home screen in the Škoda green skin](docs/home-skoda.png) |
+| <img src="docs/home-vw.png" width="400" alt="Home screen in the Volkswagen red skin"> | <img src="docs/home-skoda.png" width="400" alt="Home screen in the Škoda green skin"> |
 
 ## Credits
 
