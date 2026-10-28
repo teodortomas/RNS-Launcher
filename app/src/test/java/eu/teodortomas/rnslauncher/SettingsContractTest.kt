@@ -26,6 +26,7 @@ class SettingsContractTest {
                 "rowLanguage",
                 "rowTheme",
                 "rowKeepOn",
+                "rowHomeKeys",
                 "rowPhone",
                 "rowNav",
                 "rowRadio",

@@ -42,6 +42,9 @@ class SettingsActivity : BaseActivity() {
         BrandChrome.tintAccent(binding.root, palette)
         BrandChrome.tintRows(binding.root, palette)
 
+        binding.rowHomeKeys.setOnClickListener {
+            startActivity(Intent(this, HomeKeysActivity::class.java))
+        }
         binding.rowLanguage.setOnClickListener { showLanguageDialog() }
         binding.rowTheme.setOnClickListener { showThemeDialog() }
         binding.rowPhone.setOnClickListener {
@@ -126,6 +129,11 @@ class SettingsActivity : BaseActivity() {
     }
 
     private fun refresh() {
+        binding.homeKeysValue.text = getString(
+            R.string.settings_home_keys_value,
+            HomeMenuTile.entries.count { prefs.keyLabel(it.id) != null || prefs.keyIcon(it.id) != null },
+            HomeMenuTile.entries.size
+        )
         binding.languageValue.text = LocaleManager.displayName(this, prefs.language)
         binding.themeValue.text = getString(brandLabel(BrandTheme.current(this)))
         binding.phoneValue.text = label(prefs.phoneApp)

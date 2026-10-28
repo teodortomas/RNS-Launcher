@@ -4,13 +4,14 @@ package eu.teodortomas.rnslauncher
 enum class HomeMenuTile(
     val id: String,
     val titleRes: Int,
-    val iconRes: Int,
+    /** Default icon, as a [HomeIcons] key; the user may pick another. */
+    val defaultIconKey: String,
     val appRole: String?
 ) {
-    RADIO("radio", R.string.home_radio, R.drawable.ic_radio_fm, Prefs.ROLE_RADIO),
-    MEDIA("media", R.string.home_media, R.drawable.ic_audio, Prefs.ROLE_MEDIA),
-    PHONE("phone", R.string.home_phone, R.drawable.ic_phone, Prefs.ROLE_PHONE),
-    NAVIGATION("navigation", R.string.home_navigation, R.drawable.ic_map_pin, Prefs.ROLE_NAV),
-    APP_CONNECT("app-connect", R.string.home_app_connect, R.drawable.android_auto_launcher_icon_monochrome, Prefs.ROLE_ANDROID_AUTO),
-    APPS("apps", R.string.home_apps, R.drawable.ic_apps, null)
+    RADIO("radio", R.string.home_radio, "vw-radio", Prefs.ROLE_RADIO),
+    MEDIA("media", R.string.home_media, "music", Prefs.ROLE_MEDIA),
+    PHONE("phone", R.string.home_phone, "call", Prefs.ROLE_PHONE),
+    NAVIGATION("navigation", R.string.home_navigation, "vw-navigation", Prefs.ROLE_NAV),
+    APP_CONNECT("app-connect", R.string.home_app_connect, HomeIcons.KEY_APP_CONNECT, Prefs.ROLE_ANDROID_AUTO),
+    APPS("apps", R.string.home_apps, "apps", null)
 }

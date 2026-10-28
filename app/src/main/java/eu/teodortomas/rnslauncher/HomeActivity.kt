@@ -14,10 +14,7 @@ import android.graphics.Canvas
 import android.graphics.Paint
 import android.graphics.RectF
 import android.graphics.Typeface
-import android.graphics.drawable.Drawable
 import android.graphics.drawable.GradientDrawable
-import android.graphics.drawable.InsetDrawable
-import android.graphics.drawable.LayerDrawable
 import android.graphics.drawable.StateListDrawable
 import android.os.Bundle
 import android.os.Handler
@@ -51,6 +48,8 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private lateinit var prefs: Prefs
+    /** Captions and icons the keys were built with; see [Prefs.homeKeysSignature]. */
+    private var keySignature: String = ""
     private lateinit var clockView: TextView
     private lateinit var dateView: TextView
     private lateinit var speedValueView: TextView
@@ -98,6 +97,7 @@ class HomeActivity : AppCompatActivity() {
         prefs = Prefs(this)
         brand = BrandTheme.current(this)
         palette = brand.palette
+        keySignature = prefs.homeKeysSignature()
         setContentView(createHomeScreen())
         hideSystemBars()
         updateClock()
@@ -105,9 +105,10 @@ class HomeActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        // Settings can switch the brand while this activity is paused, and every
-        // accent is baked into the views at creation, so rebuild them.
-        if (BrandTheme.current(this) != brand) {
+        // Settings can switch the brand or rename a key while this activity is paused,
+        // and every accent, caption and icon is baked into the views at creation,
+        // so rebuild them.
+        if (BrandTheme.current(this) != brand || prefs.homeKeysSignature() != keySignature) {
             recreate()
             return
         }
@@ -210,28 +211,21 @@ class HomeActivity : AppCompatActivity() {
             isClickable = true
             isFocusable = true
         }
-        val icon = ImageView(this).apply {
-            setImageResource(tile.iconRes)
-            if (tile == HomeMenuTile.APP_CONNECT || tile == HomeMenuTile.NAVIGATION || tile == HomeMenuTile.RADIO) {
-                clearColorFilter()
-            } else {
-                setColorFilter(COLOR_ICON)
-            }
+        val icon = HomeIcons.forTile(tile, prefs.keyIcon(tile.id))
+        val iconView = ImageView(this).apply {
+            setImageResource(icon.res)
+            if (icon.tinted) setColorFilter(BrandChrome.KEY_GLYPH) else clearColorFilter()
             contentDescription = null
             scaleType = ImageView.ScaleType.FIT_CENTER
         }
-        button.addView(icon, FrameLayout.LayoutParams(
+        button.addView(iconView, FrameLayout.LayoutParams(
             FrameLayout.LayoutParams.MATCH_PARENT,
             FrameLayout.LayoutParams.MATCH_PARENT,
             Gravity.CENTER
         ))
 
-        val selectedApp = tile.appRole?.let { role ->
-            prefs.candidatesFor(role).firstOrNull { AppRepository.isInstalled(this, it) }
-        }
-        val appLabel = selectedApp?.let { AppRepository.labelFor(this, it) }
-            ?: if (tile.appRole == null) getString(R.string.all_apps) else getString(R.string.home_unassigned)
-        button.contentDescription = "${getString(tile.titleRes)}. $appLabel"
+        val caption = KeyLabels.caption(this, prefs, tile)
+        button.contentDescription = "$caption. ${KeyLabels.appName(this, prefs, tile)}"
         button.setOnClickListener { openTile(tile) }
         tile.appRole?.let { role ->
             button.setOnLongClickListener {
@@ -243,8 +237,9 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun createCaption(tile: HomeMenuTile): TextView =
-        text(tile.titleRes, HomeScreenSpec.captionSizeSp, COLOR_PRIMARY_TEXT, bold = true).apply {
+        text(KeyLabels.caption(this, prefs, tile), HomeScreenSpec.captionSizeSp, COLOR_PRIMARY_TEXT, bold = true).apply {
             gravity = Gravity.CENTER
+            isAllCaps = true
             setLetterSpacingCompat(0.035f)
             maxLines = 1
             ellipsize = android.text.TextUtils.TruncateAt.END
@@ -459,31 +454,10 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun circleBackgroundSelector(): StateListDrawable = StateListDrawable().apply {
-        addState(intArrayOf(android.R.attr.state_pressed), circleBackground(pressed = true))
-        addState(intArrayOf(android.R.attr.state_focused), circleBackground(pressed = true))
-        addState(intArrayOf(), circleBackground(pressed = false))
-    }
-
-    private fun circleBackground(pressed: Boolean): Drawable {
-        val outer = GradientDrawable().apply {
-            shape = GradientDrawable.OVAL
-            setColor(COLOR_CIRCLE_EDGE)
-        }
-        val face = GradientDrawable(
-            GradientDrawable.Orientation.TOP_BOTTOM,
-            if (pressed) intArrayOf(palette.circlePressedTop, palette.circlePressedBottom)
-            else intArrayOf(COLOR_CIRCLE_TOP, COLOR_CIRCLE_BOTTOM)
-        ).apply {
-            shape = GradientDrawable.OVAL
-            setStroke(
-                dp(
-                    if (pressed) HomeScreenSpec.circleAccentStrokeDp + 1
-                    else HomeScreenSpec.circleAccentStrokeDp
-                ),
-                if (pressed) palette.circlePressedBorder else palette.accent
-            )
-        }
-        return LayerDrawable(arrayOf(outer, InsetDrawable(face, dp(HomeScreenSpec.circleDarkRimDp))))
+        val pressed = BrandChrome.keyFace(this@HomeActivity, palette, pressed = true)
+        addState(intArrayOf(android.R.attr.state_pressed), pressed)
+        addState(intArrayOf(android.R.attr.state_focused), pressed)
+        addState(intArrayOf(), BrandChrome.keyFace(this@HomeActivity, palette))
     }
 
     private fun dp(value: Int): Int = (value * resources.displayMetrics.density + 0.5f).toInt()
@@ -630,10 +604,6 @@ class HomeActivity : AppCompatActivity() {
         private const val COLOR_STAGE_BOTTOM = 0xFF0B0C0D.toInt()
         private const val COLOR_PRIMARY_TEXT = 0xFFECEEEF.toInt()
         private const val COLOR_MUTED = 0xFF9CA1A4.toInt()
-        private const val COLOR_ICON = 0xFF424649.toInt()
-        private const val COLOR_CIRCLE_EDGE = 0xFF555A5D.toInt()
-        private const val COLOR_CIRCLE_TOP = 0xFFE0E2E3.toInt()
-        private const val COLOR_CIRCLE_BOTTOM = 0xFFB5B8BA.toInt()
         private const val COLOR_RING_SHADOW = 0x705A5D60
     }
 }

@@ -21,17 +21,21 @@ class HomeMenuTileTest {
 
     @Test
     fun appConnectTileUsesTheAndroidAutoLauncherIcon() {
-        assertEquals(R.drawable.android_auto_launcher_icon_monochrome, HomeMenuTile.APP_CONNECT.iconRes)
+        assertEquals(HomeIcons.KEY_APP_CONNECT, HomeMenuTile.APP_CONNECT.defaultIconKey)
+        assertEquals(
+            R.drawable.android_auto_launcher_icon_monochrome,
+            HomeIcons.forTile(HomeMenuTile.APP_CONNECT, null).res
+        )
     }
 
     @Test
     fun radioTileUsesTheClassicFmRadioIcon() {
-        assertEquals(R.drawable.ic_radio_fm, HomeMenuTile.RADIO.iconRes)
+        assertEquals(R.drawable.ic_radio_fm, HomeIcons.forTile(HomeMenuTile.RADIO, null).res)
     }
 
     @Test
     fun navigationTileUsesAMapMarkerIcon() {
-        assertEquals(R.drawable.ic_map_pin, HomeMenuTile.NAVIGATION.iconRes)
+        assertEquals(R.drawable.ic_map_pin, HomeIcons.forTile(HomeMenuTile.NAVIGATION, null).res)
     }
 
     @Test
