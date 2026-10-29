@@ -1,4 +1,4 @@
-# RNS-Launcher
+# rns-launcher
 
 A personal Android launcher for my aftermarket VW Golf VI head unit, kept here on GitHub for my
 own use. Kotlin, classic Views, no Google Play Services.
